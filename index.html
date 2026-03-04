@@ -82,6 +82,13 @@ td strong{font-weight:600;color:var(--tx)}
 .chart-card .cc-title{font-size:11px;font-weight:600;color:var(--mu);text-transform:uppercase;letter-spacing:.05em;margin-bottom:12px}
 .chart-card canvas{width:100%!important;height:200px!important}
 .mom-table-wrap{margin-top:12px}
+
+/* WoW chart */
+.wow-box{background:linear-gradient(135deg,rgba(124,108,255,.05),rgba(91,140,255,.05));border:1px solid rgba(124,108,255,.2);border-radius:12px;padding:20px;margin-bottom:20px}
+.wow-box .wow-title{font-size:14px;font-weight:700;margin-bottom:16px;display:flex;align-items:center;gap:8px;color:var(--ac)}
+.wow-chart-card{background:var(--sf);border:1px solid var(--bd);border-radius:10px;padding:16px}
+.wow-chart-card .cc-title{font-size:11px;font-weight:600;color:var(--mu);text-transform:uppercase;letter-spacing:.05em;margin-bottom:12px}
+.wow-chart-card canvas{width:100%!important;height:240px!important}
 </style>
 </head>
 <body>
@@ -94,7 +101,7 @@ var ADOPTION={HTP2:{station:'HTP2',location:'Gibsonton, FL',kooner:89,leaked:18,
 var SENTIMENT=[{dsp:"ALAB",station:"HDT3",responses:1,sat:1.0,time:1.0,qual:1.0,avg:1.0},{dsp:"ARMA",station:"HLA2",responses:5,sat:2.6,time:2.6,qual:2.6,avg:2.6},{dsp:"ORMP",station:"HTP2",responses:2,sat:2.0,time:2.0,qual:3.0,avg:2.3},{dsp:"MAEP",station:"HIN3",responses:1,sat:2.0,time:2.0,qual:3.0,avg:2.3},{dsp:"SFRM",station:"HDT3",responses:3,sat:3.3,time:3.0,qual:3.0,avg:3.1},{dsp:"PRLC",station:"HSL1",responses:1,sat:4.0,time:5.0,qual:3.0,avg:4.0},{dsp:"D4DS",station:"HCL2",responses:1,sat:5.0,time:5.0,qual:5.0,avg:5.0}];
 var FEEDBACK=[{date:"Feb 10",dsp:"SFRM",station:"HDT3",sat:4,time:4,qual:4,issue:"Unit 2974 pending diagnostics for a few days",suggestion:"More availability for weekend issues, over the road calls."},{date:"Feb 9",dsp:"ORMP",station:"HTP2",sat:2,time:2,qual:4,issue:"Multiple WOs not looked at since 2/4. Helpful contact laid off.",suggestion:""},{date:"Feb 9",dsp:"ARMA",station:"HLA2",sat:5,time:5,qual:5,issue:"",suggestion:"Jose Madrigal is GREAT! Very professional and attentive."},{date:"Feb 2",dsp:"SFRM",station:"HDT3",sat:3,time:3,qual:3,issue:"",suggestion:"Need 2 day techs. Better communication."},{date:"Jan 26",dsp:"ALAB",station:"HDT3",sat:1,time:1,qual:1,issue:"Lack of timely repairs. Same issue after ungrounding.",suggestion:"Timely repairs needed."},{date:"Jan 12",dsp:"D4DS",station:"HCL2",sat:5,time:5,qual:5,issue:"",suggestion:"Supervisor got more vehicles running in one evening than any mechanic in 5 years."},{date:"Jan 6",dsp:"ORMP",station:"HTP2",sat:2,time:2,qual:2,issue:"No paperwork after 7 days. Brakes still bad.",suggestion:"Need schedule access."},{date:"Jan 5",dsp:"ARMA",station:"HLA2",sat:1,time:1,qual:1,issue:"No work orders submitted.",suggestion:"Better communication."}];
 
-var cur='HDY1',names=Object.keys(WO.stations).sort(),chartInstances=[];
+var cur='OVERALL',names=Object.keys(WO.stations).sort(),chartInstances=[];
 var MLABELS=MOM.months.map(function(m,i){return['Oct','Nov','Dec','Jan','Feb'][i]+" '"+m.split('-')[0].slice(2)});
 
 function gm(k){return k==='OVERALL'?WO.overall:WO.stations[k]}
@@ -181,14 +188,10 @@ function buildSentimentSection(stn){
 }
 
 function buildWoWSection(stn){
+  if(stn==='OVERALL') return '';
   var h='<div class="wow-box"><div class="wow-title">&#x1f4ca; Weekly Volume by Station</div>';
-  h+='<div class="wow-chart-card"><div class="cc-title">';
-  if(stn==='OVERALL'){
-    h+='All Stations &mdash; WO Volume Week-over-Week';
-  } else {
-    h+=stn+' vs. Overall &mdash; WO Volume Week-over-Week';
-  }
-  h+='</div><canvas id="wowChart_'+stn.replace(/[^a-zA-Z0-9]/g,'')+'"></canvas></div></div>';
+  h+='<div class="wow-chart-card"><div class="cc-title">'+stn+' vs. Overall &mdash; WO Volume Week-over-Week</div>';
+  h+='<canvas id="wowChart_'+stn.replace(/[^a-zA-Z0-9]/g,'')+'"></canvas></div></div>';
   return h;
 }
 
