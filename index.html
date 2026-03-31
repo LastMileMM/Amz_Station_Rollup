@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Last Mile Scorecard – WK13</title>
+<title>Last Mile Scorecard WK13 – Customer</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 <style>
-:root{--bg:#080a10;--sf:#111420;--sf2:#181c2a;--bd:#222840;--ac:#5b8cff;--ac2:#7c6cff;--gn:#34d399;--gnb:rgba(52,211,153,.1);--yl:#fbbf24;--ylb:rgba(251,191,36,.1);--rd:#f87171;--rdb:rgba(248,113,113,.1);--or:#fb923c;--orb:rgba(251,146,60,.1);--cy:#22d3ee;--cyb:rgba(34,211,238,.1);--tx:#e4e8f1;--mu:#8892a8;--dm:#5a6480;--fn:'DM Sans',sans-serif;--mo:'JetBrains Mono',monospace}
+:root{--bg:#f4f6fb;--sf:#ffffff;--sf2:#eef1f8;--bd:#d4daea;--ac:#5b8cff;--ac2:#7c6cff;--gn:#34d399;--gnb:rgba(52,211,153,.1);--yl:#fbbf24;--ylb:rgba(251,191,36,.1);--rd:#f87171;--rdb:rgba(248,113,113,.1);--or:#fb923c;--orb:rgba(251,146,60,.1);--cy:#22d3ee;--cyb:rgba(34,211,238,.1);--tx:#1a2035;--mu:#5a6480;--dm:#8a94a8;--fn:'DM Sans',sans-serif;--mo:'JetBrains Mono',monospace}
 *{box-sizing:border-box;margin:0;padding:0}body{font-family:var(--fn);background:var(--bg);color:var(--tx);min-height:100vh;-webkit-font-smoothing:antialiased}
-::-webkit-scrollbar{width:5px;height:5px}::-webkit-scrollbar-track{background:transparent}::-webkit-scrollbar-thumb{background:#333;border-radius:3px}
+::-webkit-scrollbar{width:5px;height:5px}::-webkit-scrollbar-track{background:transparent}::-webkit-scrollbar-thumb{background:#c4cad8;border-radius:3px}
 .app{max-width:1440px;margin:0 auto;padding:24px 28px}
 .hdr{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:28px;padding-bottom:20px;border-bottom:1px solid var(--bd)}
 .hdr h1{font-size:22px;font-weight:700;letter-spacing:-.02em;background:linear-gradient(135deg,var(--ac),var(--ac2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
@@ -20,155 +20,94 @@
 .tabs button:hover{color:var(--tx);background:var(--sf);border-color:var(--bd)}
 .tabs button.on{background:linear-gradient(135deg,rgba(91,140,255,.15),rgba(124,108,255,.15));color:var(--ac);border-color:rgba(91,140,255,.3)}
 .kg{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:20px}
-@media(max-width:1100px){.kg{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:1100px){.kg{grid-template-columns:repeat(2,1fr)}}@media(max-width:600px){.kg{grid-template-columns:1fr}}
 .kp{background:var(--sf);border:1px solid var(--bd);border-radius:11px;padding:16px 18px;position:relative;overflow:hidden}
 .kp::after{content:'';position:absolute;top:0;left:0;right:0;height:2px}
-.kp.gr::after{background:var(--gn)}.kp.ye::after{background:var(--yl)}.kp.re::after{background:var(--rd)}.kp.cy::after{background:var(--cy)}.kp.or::after{background:var(--or)}.kp.bl::after{background:var(--ac)}
+.kp.gr::after{background:var(--gn)}.kp.ye::after{background:var(--yl)}.kp.re::after{background:var(--rd)}.kp.cy::after{background:var(--cy)}.kp.or::after{background:var(--or)}
 .kp .lb{font-size:10px;text-transform:uppercase;letter-spacing:.07em;color:var(--mu);margin-bottom:6px;font-weight:600}
 .kp .vl{font-family:var(--mo);font-size:24px;font-weight:700;line-height:1}
-.kp .vl.gr{color:var(--gn)}.kp .vl.ye{color:var(--yl)}.kp .vl.re{color:var(--rd)}.kp .vl.or{color:var(--or)}.kp .vl.cy{color:var(--cy)}.kp .vl.bl{color:var(--ac)}
+.kp .vl.gr{color:var(--gn)}.kp .vl.ye{color:var(--yl)}.kp .vl.re{color:var(--rd)}.kp .vl.or{color:var(--or)}.kp .vl.cy{color:var(--cy)}
 .kp .sb{font-size:10px;color:var(--dm);margin-top:5px}
 .delta{font-size:10px;font-family:var(--mo);font-weight:600;margin-left:4px}
 .delta.up{color:var(--gn)}.delta.dn{color:var(--rd)}.delta.nt{color:var(--mu)}
 .sc{font-size:13px;font-weight:700;margin:20px 0 12px;color:var(--tx);display:flex;align-items:center;gap:7px;letter-spacing:-.01em}
 .sc::before{content:'';width:3px;height:14px;border-radius:2px;background:linear-gradient(180deg,var(--ac),var(--ac2))}
+.sc.sent::before{background:linear-gradient(180deg,var(--cy),var(--ac2))}
 .tw{background:var(--sf);border:1px solid var(--bd);border-radius:11px;overflow:hidden;margin-bottom:16px}
 .tw.scr{overflow-x:auto}
 table{width:100%;border-collapse:collapse;font-size:12px}
-th{padding:9px 14px;text-align:left;font-weight:600;color:var(--mu);text-transform:uppercase;font-size:9.5px;letter-spacing:.06em;border-bottom:1px solid var(--bd);background:rgba(91,140,255,.03);white-space:nowrap}
+th{padding:9px 14px;text-align:left;font-weight:600;color:var(--mu);text-transform:uppercase;font-size:9.5px;letter-spacing:.06em;border-bottom:1px solid var(--bd);background:rgba(91,140,255,.06);white-space:nowrap}
 td{padding:8px 14px;border-bottom:1px solid rgba(34,40,64,.5)}
-tr:last-child td{border-bottom:none}tr:hover{background:rgba(91,140,255,.02)}
+tr:last-child td{border-bottom:none}tr:hover{background:rgba(91,140,255,.04)}
 td strong{font-weight:600;color:var(--tx)}
 .bg{display:inline-block;padding:2px 9px;border-radius:18px;font-size:9.5px;font-weight:700;font-family:var(--mo);letter-spacing:.02em}
-.bg.gr{background:var(--gnb);color:var(--gn)}.bg.ye{background:var(--ylb);color:var(--yl)}.bg.re{background:var(--rdb);color:var(--rd)}.bg.or{background:var(--orb);color:var(--or)}.bg.cy{background:var(--cyb);color:var(--cy)}.bg.bl{background:rgba(91,140,255,.15);color:var(--ac)}
+.bg.gr{background:var(--gnb);color:var(--gn)}.bg.ye{background:var(--ylb);color:var(--yl)}.bg.re{background:var(--rdb);color:var(--rd)}.bg.or{background:var(--orb);color:var(--or)}.bg.cy{background:var(--cyb);color:var(--cy)}
 .bars{margin-bottom:20px}
 .br{display:flex;align-items:center;gap:10px;margin-bottom:6px}
-.br .bl-lbl{width:95px;font-size:11px;color:var(--mu);text-align:right;flex-shrink:0;font-weight:500}
+.br .bl{width:95px;font-size:11px;color:var(--mu);text-align:right;flex-shrink:0;font-weight:500}
 .br .bt{flex:1;height:20px;background:var(--sf2);border-radius:4px;overflow:hidden;border:1px solid var(--bd)}
 .br .bf{height:100%;border-radius:3px;display:flex;align-items:center;padding-left:7px;font-size:9.5px;font-weight:700;color:#fff;font-family:var(--mo);min-width:30px;transition:width .5s ease}
 .bf.gr{background:linear-gradient(90deg,#059669,var(--gn))}.bf.ye{background:linear-gradient(90deg,#b45309,var(--yl))}.bf.re{background:linear-gradient(90deg,#dc2626,var(--rd))}.bf.bl{background:linear-gradient(90deg,#3b6cf5,var(--ac))}.bf.cy{background:linear-gradient(90deg,#0891b2,var(--cy))}
 .br .bc{width:38px;font-size:10.5px;color:var(--dm);font-family:var(--mo);font-weight:500}
 .duo{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:16px}
 @media(max-width:800px){.duo{grid-template-columns:1fr}}
+.sent-box{background:linear-gradient(135deg,rgba(34,211,238,.06),rgba(124,108,255,.06));border:1px solid rgba(34,211,238,.2);border-radius:12px;padding:20px;margin-bottom:20px}
+.sent-box .sent-title{font-size:14px;font-weight:700;margin-bottom:14px;display:flex;align-items:center;gap:8px;color:var(--cy)}
+.sent-kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px;margin-bottom:16px}
+.sent-kpi{background:var(--sf);border:1px solid var(--bd);border-radius:9px;padding:12px 14px;text-align:center}
+.sent-kpi .sk-lb{font-size:9px;text-transform:uppercase;letter-spacing:.06em;color:var(--mu);margin-bottom:4px}
+.sent-kpi .sk-vl{font-family:var(--mo);font-size:20px;font-weight:700}
+.fb-card{background:var(--sf);border:1px solid var(--bd);border-radius:10px;padding:14px;margin-bottom:10px}
+.fb-hdr{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;flex-wrap:wrap;gap:6px}
+.fb-dsp{font-family:var(--mo);font-weight:600;font-size:12px}
+.fb-date{font-size:10px;color:var(--dm)}
+.fb-scores{display:flex;gap:10px;font-family:var(--mo);font-size:10px;color:var(--mu)}
+.fb-scores span{display:flex;align-items:center;gap:3px}
+.fb-txt{font-size:11.5px;color:var(--mu);line-height:1.5;font-style:italic;padding:8px 0 0;border-top:1px solid var(--bd);margin-top:6px}
+.fb-txt.issue{border-left:2px solid var(--rd);padding-left:10px;margin-bottom:6px;border-top:none;padding-top:0}
+.fb-txt.pos{border-left:2px solid var(--gn);padding-left:10px;border-top:none;padding-top:0}
+.no-data{text-align:center;padding:20px;color:var(--dm);font-size:12px;font-style:italic}
+.adopt-bar{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.adopt-bar .ab-lbl{font-size:11px;color:var(--mu);min-width:70px}
+.adopt-bar .ab-track{flex:1;height:18px;background:var(--sf2);border-radius:4px;overflow:hidden;position:relative}
+.adopt-bar .ab-fill{height:100%;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;color:#fff;font-family:var(--mo)}
+.adopt-bar .ab-target{position:absolute;top:0;bottom:0;width:2px;background:var(--yl);left:85%}
+.adopt-bar .ab-val{font-family:var(--mo);font-size:12px;font-weight:600;min-width:48px;text-align:right}
+.mom-box{background:linear-gradient(135deg,rgba(251,146,60,.05),rgba(251,191,36,.05));border:1px solid rgba(251,146,60,.2);border-radius:12px;padding:20px;margin-bottom:20px}
+.mom-box .mom-title{font-size:14px;font-weight:700;margin-bottom:16px;display:flex;align-items:center;gap:8px;color:var(--or)}
 .chart-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:16px}
 @media(max-width:900px){.chart-row{grid-template-columns:1fr}}
 .chart-card{background:var(--sf);border:1px solid var(--bd);border-radius:10px;padding:16px}
 .chart-card .cc-title{font-size:11px;font-weight:600;color:var(--mu);text-transform:uppercase;letter-spacing:.05em;margin-bottom:12px}
 .chart-card canvas{width:100%!important;height:200px!important}
-.mom-box{background:linear-gradient(135deg,rgba(251,146,60,.05),rgba(251,191,36,.05));border:1px solid rgba(251,146,60,.2);border-radius:12px;padding:20px;margin-bottom:20px}
-.mom-box .mom-title{font-size:14px;font-weight:700;margin-bottom:16px;display:flex;align-items:center;gap:8px;color:var(--or)}
-.station-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;margin-bottom:20px}
-.stn-card{background:var(--sf);border:1px solid var(--bd);border-radius:10px;padding:14px;cursor:pointer;transition:all .15s}
-.stn-card:hover,.stn-card.active{border-color:var(--ac);background:rgba(91,140,255,.07)}
-.stn-card .stn-code{font-family:var(--mo);font-size:18px;font-weight:700;margin-bottom:6px}
-.stn-card .stn-stat{font-size:10px;color:var(--mu);margin-top:3px}
-.stn-card .stn-val{font-family:var(--mo);font-size:13px;font-weight:600}
-.no-data{text-align:center;padding:30px;color:var(--dm);font-size:12px;font-style:italic}
+.mom-table-wrap{margin-top:12px}
+
+
 </style>
 </head>
 <body>
 <div id="root"></div>
 <script>
-// ── DATA ──────────────────────────────────────────────────────────────────────
-var MONTHS = ["2025-10","2025-11","2025-12","2026-01","2026-02","2026-03"];
-var MLABELS = ["Oct '25","Nov '25","Dec '25","Jan '26","Feb '26","Mar '26"];
-var WEEK_LABELS = ["W41","W42","W43","W44","W45","W46","W47","W48","W49","W50","W51","W52","W01","W02","W03","W04","W05","W06","W07","W08","W09","W10","W11","W12","W13"];
+var WO={"overall":{"total":3857,"completed":3484,"cancelled":331,"on_hold":14,"open":28,"status_counts":{"COMPLETED":3484,"CANCELLED":331,"ON_HOLD":14,"DISPATCHED":10,"DISPATCH_ACCEPTED":8,"AWAITING_ESTIMATE_APPROVAL":6,"PENDING":3,"IN_REPAIR":1},"priorities":{"MEDIUM":3684,"CRITICAL":120,"LOW":52,"HIGH":1},"categories":{"UNKNOWN":1648,"PREVENTATIVE_MAINTENANCE":1578,"MECHANICAL":440,"ELECTRICAL":110,"BODYWORK":75,"STRUCTURAL":6},"types":{"NON_SCHEDULED":3807,"SCHEDULED":50},"workflows":{"CHECK_AND_ADVISE":1870,"PM_A":668,"REPAIR":641,"PM_B":372,"DOT":182,"DOT_INSPECTION":24,"PM_DOT":17,"UNKNOWN":17,"CTC":13,"SYNTHETIC_OIL_CHANGE":11,"OIL_CHANGE":9,"AIR_FILTER":4,"DIESEL_PRIMARY_FUEL_FILTER_ELE":4,"DOT_ANNUAL_INSPECTION":4,"SVC_AUTO_TRANSMISSION":3,"REAR_DIFFERENTIAL_SERVICE":3,"BRAKE_SYSTEM_FLUSH":2,"DPFE_SENSOR":2,"COOLANT_SERVICES":2,"SERPENTINE_BELT":2,"FILTER_CRANKCASE_VENTILATION":1,"LIFT_GATE_PM":1,"SPARK_PLUGS":1,"CLEAN_DIESEL_PARTICULATE_FILTER":1,"COOLING_SYS_ANTIFREEZE":1,"FILTER_DEF_TANK":1,"WIPER_BLADE_ASSY":1},"technicians":{"LM - Jose Madrigal":369,"LM - Terence Lucas":302,"LM - Thomas McRoberts":259,"LM - Evereth Salas":242,"LM - Marcos Tun":175,"LM - Fernando Cruz":172,"LM - Jett Bukovac":167,"LM NC - Justin Owens":151,"LM - Alejandro Fernandez":150,"OH - Charles Burgess":123,"LM - Hector Brito":116,"LM - Justin Forte":113,"LM - Brooks Lawson":99,"Jessamine Rodriguez":95,"Unknown":86},"avg_cost":699.81,"total_cost":1380716.98,"cost_count":1973,"avg_labor":0,"avg_parts":0,"median_comp_hrs":26.4,"avg_comp_hrs":63.0,"comp_time_count":3477,"median_resp_hrs":8.9,"resp_count":3309,"hold_reasons":{"We're waiting for the part to be delivered. ":11,"In the process of obtaining the required parts. ":2,"Additional tasks identified during service. Unexpected complexity or further issues identified ":1},"cancel_reasons":{"Duplicate of another work order ":166,"Work is not required ":86,"Technical system or software issue preventing work completion":32,"The unit has moved on ":14,"Unit at dealer":13,"Please be specific ":6,"We can't get the parts required ":4,"Unit at third party workshop":4,"We can't get the tools to complete the work request ":3,"Follow up with customer regarding findings ":2,"Work order was cancelled because it has been completed in a legacy platform. ":1},"label":"OVERALL"},"stations":{"HAU1":{"total":275,"completed":253,"cancelled":21,"on_hold":1,"open":0,"status_counts":{"COMPLETED":253,"CANCELLED":21,"ON_HOLD":1},"priorities":{"MEDIUM":272,"LOW":2,"CRITICAL":1},"categories":{"PREVENTATIVE_MAINTENANCE":159,"MECHANICAL":47,"UNKNOWN":33,"ELECTRICAL":23,"BODYWORK":13},"types":{"NON_SCHEDULED":273,"SCHEDULED":2},"workflows":{"CHECK_AND_ADVISE":110,"PM_A":79,"REPAIR":50,"PM_B":22,"DOT":4,"OIL_CHANGE":3,"UNKNOWN":1,"PM_DOT":1,"DPFE_SENSOR":1,"FILTER_CRANKCASE_VENTILATION":1,"COOLANT_SERVICES":1,"AIR_FILTER":1,"DIESEL_PRIMARY_FUEL_FILTER_ELE":1},"technicians":{"LM - Fernando Cruz":171,"LM - Brooks Lawson":99,"LM - Kelsey Githens":2,"Last Mile - Brooks Lawson":1,"Tech - Kelsey Githens":1,"Unknown":1},"avg_cost":679.83,"total_cost":101974.37,"cost_count":150,"avg_labor":0,"avg_parts":0,"median_comp_hrs":13.6,"avg_comp_hrs":42.9,"comp_time_count":253,"median_resp_hrs":4.1,"resp_count":249,"hold_reasons":{"We're waiting for the part to be delivered. ":1},"cancel_reasons":{"Duplicate of another work order ":12,"Work is not required ":5,"The unit has moved on ":2,"Unit at third party workshop":1,"Technical system or software issue preventing work completion":1},"label":"HAU1"},"HCL2":{"total":295,"completed":268,"cancelled":24,"on_hold":0,"open":3,"status_counts":{"COMPLETED":268,"CANCELLED":24,"AWAITING_ESTIMATE_APPROVAL":2,"DISPATCH_ACCEPTED":1},"priorities":{"MEDIUM":293,"LOW":2},"categories":{"PREVENTATIVE_MAINTENANCE":226,"MECHANICAL":48,"BODYWORK":12,"ELECTRICAL":8,"STRUCTURAL":1},"types":{"NON_SCHEDULED":291,"SCHEDULED":4},"workflows":{"PM_A":73,"CHECK_AND_ADVISE":71,"REPAIR":69,"PM_B":44,"DOT":25,"PM_DOT":6,"DOT_INSPECTION":5,"UNKNOWN":1,"LIFT_GATE_PM":1},"technicians":{"LM NC - Justin Owens":151,"Macon, GA - Justin Owens":30,"Tech - Kelsey Githens":22,"LM - Eugene Fowler":22,"FM - Eugene Fowler":16,"Unknown":16,"IN - David Ross (Lead Tech)":13,"David Knight":9,"LM - Victor Wells":6,"LM - Alexander Childs":4,"NC - Steven Knotts":3,"LM - Christopher Steele":2,"PMs ONLY - Todd Bradley":1},"avg_cost":1145.62,"total_cost":147784.38,"cost_count":129,"avg_labor":0,"avg_parts":0,"median_comp_hrs":61.3,"avg_comp_hrs":113.0,"comp_time_count":265,"median_resp_hrs":24.0,"resp_count":209,"hold_reasons":{},"cancel_reasons":{"Duplicate of another work order ":13,"Work is not required ":8,"Technical system or software issue preventing work completion":3},"label":"HCL2"},"HCT2":{"total":160,"completed":153,"cancelled":7,"on_hold":0,"open":0,"status_counts":{"COMPLETED":153,"CANCELLED":7},"priorities":{"MEDIUM":155,"CRITICAL":4,"LOW":1},"categories":{"PREVENTATIVE_MAINTENANCE":90,"UNKNOWN":54,"MECHANICAL":14,"BODYWORK":1,"ELECTRICAL":1},"types":{"NON_SCHEDULED":158,"SCHEDULED":2},"workflows":{"CHECK_AND_ADVISE":60,"PM_A":37,"REPAIR":34,"PM_B":23,"DOT":4,"OIL_CHANGE":1,"SYNTHETIC_OIL_CHANGE":1},"technicians":{"LM - Alexander Childs":52,"LM - Cletus Harvey":32,"LM - Eugene Fowler":22,"LM-Christopher Harvey":18,"Christopher Harvey":17,"FM - Eugene Fowler":16,"Unknown":3},"avg_cost":782.52,"total_cost":63384.21,"cost_count":81,"avg_labor":0,"avg_parts":0,"median_comp_hrs":25.1,"avg_comp_hrs":43.9,"comp_time_count":153,"median_resp_hrs":7.8,"resp_count":150,"hold_reasons":{},"cancel_reasons":{"Unit at third party workshop":2,"Follow up with customer regarding findings ":2,"Work is not required ":1,"Duplicate of another work order ":1,"Technical system or software issue preventing work completion":1},"label":"HCT2"},"HDT3":{"total":591,"completed":548,"cancelled":43,"on_hold":0,"open":0,"status_counts":{"COMPLETED":548,"CANCELLED":43},"priorities":{"MEDIUM":507,"CRITICAL":79,"LOW":4,"HIGH":1},"categories":{"UNKNOWN":463,"PREVENTATIVE_MAINTENANCE":108,"MECHANICAL":16,"BODYWORK":3,"ELECTRICAL":1},"types":{"NON_SCHEDULED":584,"SCHEDULED":7},"workflows":{"CHECK_AND_ADVISE":391,"REPAIR":71,"PM_A":58,"PM_B":40,"DOT":19,"UNKNOWN":3,"SYNTHETIC_OIL_CHANGE":3,"PM_DOT":2,"DPFE_SENSOR":1,"SVC_AUTO_TRANSMISSION":1,"DOT_ANNUAL_INSPECTION":1,"OIL_CHANGE":1},"technicians":{"LM - Terence Lucas":302,"LM - Thomas McRoberts":258,"IN - David Ross (Lead Tech)":6,"Last Mile - Thomas McRoberts":5,"LM - Richard Anderson Sr.":5,"LM - Victor Wells":5,"Last Mile - Terence Lucas":3,"Unknown":3,"Christian Scheibly":3,"Last Mile - Richard Anderson Sr.":1},"avg_cost":737.68,"total_cost":282531.9,"cost_count":383,"avg_labor":0,"avg_parts":0,"median_comp_hrs":30.6,"avg_comp_hrs":56.7,"comp_time_count":548,"median_resp_hrs":8.8,"resp_count":551,"hold_reasons":{},"cancel_reasons":{"Duplicate of another work order ":24,"Work is not required ":7,"Unit at dealer":5,"Technical system or software issue preventing work completion":4,"The unit has moved on ":2,"Unit at third party workshop":1},"label":"HDT3"},"HDY1":{"total":225,"completed":210,"cancelled":14,"on_hold":1,"open":0,"status_counts":{"COMPLETED":210,"CANCELLED":14,"ON_HOLD":1},"priorities":{"MEDIUM":222,"LOW":2,"CRITICAL":1},"categories":{"PREVENTATIVE_MAINTENANCE":149,"MECHANICAL":47,"UNKNOWN":14,"ELECTRICAL":8,"BODYWORK":7},"types":{"NON_SCHEDULED":221,"SCHEDULED":4},"workflows":{"PM_A":72,"CHECK_AND_ADVISE":53,"REPAIR":46,"PM_B":26,"DOT":14,"PM_DOT":3,"AIR_FILTER":2,"SPARK_PLUGS":1,"DOT_INSPECTION":1,"COOLANT_SERVICES":1,"REAR_DIFFERENTIAL_SERVICE":1,"COOLING_SYS_ANTIFREEZE":1,"OIL_CHANGE":1,"WIPER_BLADE_ASSY":1,"SYNTHETIC_OIL_CHANGE":1,"DIESEL_PRIMARY_FUEL_FILTER_ELE":1},"technicians":{"OH - Charles Burgess":123,"LM - Timothy Merritt":45,"LM - Victor Wells":22,"David Knight":12,"LM - Richard Anderson Sr.":6,"FM - Eugene Fowler":5,"CORE - Robert Sutton":4,"Unknown":3,"Last Mile - Victor Wells":2,"OH - Randy Fisher":2,"LM - Fernando Cruz":1},"avg_cost":741.75,"total_cost":59339.71,"cost_count":80,"avg_labor":0,"avg_parts":0,"median_comp_hrs":44.4,"avg_comp_hrs":78.2,"comp_time_count":210,"median_resp_hrs":16.6,"resp_count":188,"hold_reasons":{"We're waiting for the part to be delivered. ":1},"cancel_reasons":{"Duplicate of another work order ":7,"Work is not required ":5,"The unit has moved on ":2},"label":"HDY1"},"HHO3":{"total":431,"completed":368,"cancelled":50,"on_hold":1,"open":12,"status_counts":{"COMPLETED":368,"CANCELLED":50,"DISPATCH_ACCEPTED":6,"DISPATCHED":3,"AWAITING_ESTIMATE_APPROVAL":2,"ON_HOLD":1,"IN_REPAIR":1},"priorities":{"MEDIUM":417,"LOW":8,"CRITICAL":6},"categories":{"UNKNOWN":308,"PREVENTATIVE_MAINTENANCE":111,"MECHANICAL":9,"BODYWORK":2,"ELECTRICAL":1},"types":{"NON_SCHEDULED":423,"SCHEDULED":8},"workflows":{"CHECK_AND_ADVISE":238,"PM_A":55,"REPAIR":54,"PM_B":44,"DOT":24,"DOT_INSPECTION":8,"UNKNOWN":3,"DOT_ANNUAL_INSPECTION":2,"PM_DOT":1,"SYNTHETIC_OIL_CHANGE":1,"SVC_AUTO_TRANSMISSION":1},"technicians":{"LM - Evereth Salas":242,"LM - Lamont Henderson":84,"HOU, TX - Omar Noriega":42,"LM - Sabrina Finch":38,"Unknown":18,"David Knight":6,"CORE - Manuel Hidalgo":1},"avg_cost":659.19,"total_cost":142384.54,"cost_count":216,"avg_labor":0,"avg_parts":0,"median_comp_hrs":29.8,"avg_comp_hrs":69.4,"comp_time_count":365,"median_resp_hrs":10.4,"resp_count":356,"hold_reasons":{"We're waiting for the part to be delivered. ":1},"cancel_reasons":{"Duplicate of another work order ":34,"Work is not required ":8,"Technical system or software issue preventing work completion":7,"We can't get the tools to complete the work request ":1},"label":"HHO3"},"HIN3":{"total":84,"completed":57,"cancelled":27,"on_hold":0,"open":0,"status_counts":{"COMPLETED":57,"CANCELLED":27},"priorities":{"MEDIUM":76,"CRITICAL":7,"LOW":1},"categories":{"UNKNOWN":52,"PREVENTATIVE_MAINTENANCE":24,"MECHANICAL":6,"ELECTRICAL":1,"BODYWORK":1},"types":{"NON_SCHEDULED":82,"SCHEDULED":2},"workflows":{"CHECK_AND_ADVISE":50,"REPAIR":9,"PM_B":9,"PM_A":8,"DOT":6,"PM_DOT":2},"technicians":{"LM - Victor Wells":50,"Last Mile - John Weaver":11,"Unknown":9,"IN - Ricky Severance (IND9)":6,"IN - David Ross (Lead Tech)":3,"IN - Kevin Johnson":3,"Last Mile - Victor Wells":1,"LM - Thomas McRoberts":1},"avg_cost":927.38,"total_cost":32458.13,"cost_count":35,"avg_labor":0,"avg_parts":0,"median_comp_hrs":23.9,"avg_comp_hrs":67.1,"comp_time_count":57,"median_resp_hrs":6.7,"resp_count":56,"hold_reasons":{},"cancel_reasons":{"Work is not required ":12,"Please be specific ":6,"Duplicate of another work order ":5,"Technical system or software issue preventing work completion":2,"Unit at dealer":1,"We can't get the tools to complete the work request ":1},"label":"HIN3"},"HLA2":{"total":684,"completed":636,"cancelled":45,"on_hold":3,"open":0,"status_counts":{"COMPLETED":636,"CANCELLED":45,"ON_HOLD":3},"priorities":{"MEDIUM":664,"LOW":14,"CRITICAL":6},"categories":{"PREVENTATIVE_MAINTENANCE":295,"UNKNOWN":198,"MECHANICAL":144,"ELECTRICAL":27,"BODYWORK":15,"STRUCTURAL":5},"types":{"NON_SCHEDULED":668,"SCHEDULED":16},"workflows":{"CHECK_AND_ADVISE":334,"REPAIR":118,"PM_A":113,"PM_B":57,"DOT":27,"CTC":13,"DOT_INSPECTION":7,"UNKNOWN":5,"SYNTHETIC_OIL_CHANGE":4,"DIESEL_PRIMARY_FUEL_FILTER_ELE":2,"OIL_CHANGE":2,"FILTER_DEF_TANK":1,"SERPENTINE_BELT":1},"technicians":{"LM - Jose Madrigal":367,"LM - Justin Forte":113,"Fresno - Nicholas Darter":80,"LM - Denzel Alexander":61,"Clinton Thompson":13,"Fresno - David Knight":11,"LM - Dale Garcia":9,"LM - Johnivan Briseno":8,"Enrique Gomez-Navarro":6,"Marcos Valdivia":6,"Unknown":4,"Fresno - Pablo Alvarenga \ud83d\udcbb":4,"LM - Kelsey Githens":1,"Stockton - Jesse Ruckman":1},"avg_cost":539.12,"total_cost":195159.77,"cost_count":362,"avg_labor":0,"avg_parts":0,"median_comp_hrs":15.9,"avg_comp_hrs":48.5,"comp_time_count":636,"median_resp_hrs":8.1,"resp_count":602,"hold_reasons":{"We're waiting for the part to be delivered. ":3},"cancel_reasons":{"Duplicate of another work order ":35,"Work is not required ":9,"Technical system or software issue preventing work completion":1},"label":"HLA2"},"HMK4":{"total":177,"completed":165,"cancelled":8,"on_hold":0,"open":4,"status_counts":{"COMPLETED":165,"CANCELLED":8,"DISPATCHED":2,"DISPATCH_ACCEPTED":1,"AWAITING_ESTIMATE_APPROVAL":1},"priorities":{"MEDIUM":175,"LOW":2},"categories":{"PREVENTATIVE_MAINTENANCE":100,"MECHANICAL":39,"ELECTRICAL":27,"BODYWORK":10,"UNKNOWN":1},"types":{"NON_SCHEDULED":176,"SCHEDULED":1},"workflows":{"CHECK_AND_ADVISE":52,"PM_A":44,"REPAIR":38,"PM_B":20,"DOT":19,"BRAKE_SYSTEM_FLUSH":2,"SERPENTINE_BELT":1,"CLEAN_DIESEL_PARTICULATE_FILTER":1},"technicians":{"LM - Alejandro Fernandez":146,"LM - William Low":29,"Unknown":2},"avg_cost":578.75,"total_cost":42248.59,"cost_count":73,"avg_labor":0,"avg_parts":0,"median_comp_hrs":21.3,"avg_comp_hrs":61.1,"comp_time_count":164,"median_resp_hrs":8.3,"resp_count":160,"hold_reasons":{},"cancel_reasons":{"Duplicate of another work order ":6,"Work is not required ":1,"Technical system or software issue preventing work completion":1},"label":"HMK4"},"HMS2":{"total":187,"completed":171,"cancelled":15,"on_hold":1,"open":0,"status_counts":{"COMPLETED":171,"CANCELLED":15,"ON_HOLD":1},"priorities":{"MEDIUM":185,"LOW":1,"CRITICAL":1},"categories":{"UNKNOWN":96,"PREVENTATIVE_MAINTENANCE":77,"MECHANICAL":13,"BODYWORK":1},"types":{"NON_SCHEDULED":185,"SCHEDULED":2},"workflows":{"CHECK_AND_ADVISE":88,"PM_B":37,"REPAIR":35,"PM_A":15,"DOT":8,"PM_DOT":2,"DOT_INSPECTION":1,"DOT_ANNUAL_INSPECTION":1},"technicians":{"Last Mile - Joseph Defreeuw":43,"FM - Eugene Fowler":42,"LM - Michael Gorman":22,"LM - Eugene Fowler":20,"Last Mile - Brad Butti":17,"MN - Daniel Freeman (MSP8/MSP1 Mon,Tue/All PM-B)":15,"MN - Patrick Roberts (MSP7)":9,"LM - Kelsey Githens":5,"LM - Richard Anderson Sr.":4,"LM - Alejandro Fernandez":4,"Unknown":3,"Jonathan DeMello":2,"IN - David Ross (Lead Tech)":1},"avg_cost":710.22,"total_cost":71022.22,"cost_count":100,"avg_labor":0,"avg_parts":0,"median_comp_hrs":30.2,"avg_comp_hrs":60.9,"comp_time_count":171,"median_resp_hrs":11.0,"resp_count":163,"hold_reasons":{"We're waiting for the part to be delivered. ":1},"cancel_reasons":{"Work is not required ":8,"Duplicate of another work order ":6,"The unit has moved on ":1},"label":"HMS2"},"HPD1":{"total":30,"completed":17,"cancelled":8,"on_hold":0,"open":5,"status_counts":{"COMPLETED":17,"CANCELLED":8,"DISPATCHED":5},"priorities":{"MEDIUM":26,"CRITICAL":4},"categories":{"UNKNOWN":17,"PREVENTATIVE_MAINTENANCE":9,"MECHANICAL":3,"BODYWORK":1},"types":{"NON_SCHEDULED":30},"workflows":{"CHECK_AND_ADVISE":17,"DOT":8,"PM_B":3,"REPAIR":1,"DOT_INSPECTION":1},"technicians":{"CORE - Michael Ward":19,"Unknown":6,"Last Mile - Noussayr Marzouki":5},"avg_cost":541.38,"total_cost":2165.51,"cost_count":4,"avg_labor":0,"avg_parts":0,"median_comp_hrs":52.0,"avg_comp_hrs":68.8,"comp_time_count":17,"median_resp_hrs":11.1,"resp_count":16,"hold_reasons":{},"cancel_reasons":{"Duplicate of another work order ":4,"Work is not required ":2,"Work order was cancelled because it has been completed in a legacy platform. ":1,"Technical system or software issue preventing work completion":1},"label":"HPD1"},"HSD2":{"total":10,"completed":7,"cancelled":3,"on_hold":0,"open":0,"status_counts":{"COMPLETED":7,"CANCELLED":3},"priorities":{"MEDIUM":10},"categories":{"MECHANICAL":8,"ELECTRICAL":1,"PREVENTATIVE_MAINTENANCE":1},"types":{"NON_SCHEDULED":10},"workflows":{"CHECK_AND_ADVISE":9,"DOT":1},"technicians":{"CORE - Juan Molina":6,"LM - Jose Madrigal":2,"Unknown":2},"avg_cost":548.01,"total_cost":1644.02,"cost_count":3,"avg_labor":0,"avg_parts":0,"median_comp_hrs":29.7,"avg_comp_hrs":109.2,"comp_time_count":7,"median_resp_hrs":18.0,"resp_count":5,"hold_reasons":{},"cancel_reasons":{"Unit at dealer":1,"Work is not required ":1,"Technical system or software issue preventing work completion":1},"label":"HSD2"},"HSL1":{"total":195,"completed":170,"cancelled":24,"on_hold":0,"open":1,"status_counts":{"COMPLETED":170,"CANCELLED":24,"AWAITING_ESTIMATE_APPROVAL":1},"priorities":{"MEDIUM":195},"categories":{"UNKNOWN":97,"PREVENTATIVE_MAINTENANCE":86,"MECHANICAL":8,"BODYWORK":4},"types":{"NON_SCHEDULED":194,"SCHEDULED":1},"workflows":{"CHECK_AND_ADVISE":98,"PM_A":36,"REPAIR":33,"PM_B":17,"DOT":8,"UNKNOWN":2,"OIL_CHANGE":1},"technicians":{"LM - Marcos Tun":175,"Unknown":7,"LM - Kelsey Githens":5,"SLC - Dakota Theademan (SLC2)":3,"Last Mile- Marcos Tun":3,"SLC - Torrey Watson ( All sites)":1,"SLC -PM Only Austin Harwood":1},"avg_cost":591.04,"total_cost":41964.12,"cost_count":71,"avg_labor":0,"avg_parts":0,"median_comp_hrs":22.8,"avg_comp_hrs":44.1,"comp_time_count":170,"median_resp_hrs":6.7,"resp_count":164,"hold_reasons":{},"cancel_reasons":{"Work is not required ":9,"Duplicate of another work order ":9,"Technical system or software issue preventing work completion":4,"The unit has moved on ":2},"label":"HSL1"},"HTP2":{"total":513,"completed":461,"cancelled":42,"on_hold":7,"open":3,"status_counts":{"COMPLETED":461,"CANCELLED":42,"ON_HOLD":7,"PENDING":3},"priorities":{"MEDIUM":487,"LOW":15,"CRITICAL":11},"categories":{"UNKNOWN":315,"PREVENTATIVE_MAINTENANCE":143,"MECHANICAL":38,"ELECTRICAL":12,"BODYWORK":5},"types":{"NON_SCHEDULED":512,"SCHEDULED":1},"workflows":{"CHECK_AND_ADVISE":299,"REPAIR":83,"PM_A":78,"PM_B":30,"DOT":15,"UNKNOWN":2,"REAR_DIFFERENTIAL_SERVICE":2,"DOT_INSPECTION":1,"SVC_AUTO_TRANSMISSION":1,"AIR_FILTER":1,"SYNTHETIC_OIL_CHANGE":1},"technicians":{"LM - Jett Bukovac":167,"LM - Hector Brito":116,"Jessamine Rodriguez":95,"LM John Wallace":60,"LM - Eugene Fowler":18,"IN - David Ross (Lead Tech)":18,"Last Mile - Hector Brito":9,"Unknown":9,"FL - Daniel De Jesus":9,"LM - Kelsey Githens":7,"Last Mile - Kelsey Githens":3,"John Wallace":2},"avg_cost":687.61,"total_cost":196655.51,"cost_count":286,"avg_labor":0,"avg_parts":0,"median_comp_hrs":32.4,"avg_comp_hrs":74.0,"comp_time_count":461,"median_resp_hrs":11.1,"resp_count":440,"hold_reasons":{"We're waiting for the part to be delivered. ":4,"In the process of obtaining the required parts. ":2,"Additional tasks identified during service. Unexpected complexity or further issues identified ":1},"cancel_reasons":{"Duplicate of another work order ":10,"Work is not required ":10,"Technical system or software issue preventing work completion":6,"Unit at dealer":6,"The unit has moved on ":5,"We can't get the parts required ":4,"We can't get the tools to complete the work request ":1},"label":"HTP2"}}};
+var MOM={"months":["2025-10","2025-11","2025-12","2026-01","2026-02","2026-03"],"mom":{"HAU1":{"2025-10":{"t":10,"c":8,"x":2,"h":0,"o":0,"avgCost":692.56,"totCost":3462.79,"medComp":68.5,"avgComp":164.4,"medResp":2.9},"2025-11":{"t":14,"c":9,"x":5,"h":0,"o":0,"avgCost":435.15,"totCost":2610.92,"medComp":118.5,"avgComp":167.0,"medResp":4.2},"2025-12":{"t":28,"c":25,"x":3,"h":0,"o":0,"avgCost":540.13,"totCost":6481.54,"medComp":21.9,"avgComp":34.0,"medResp":2.0},"2026-01":{"t":45,"c":41,"x":4,"h":0,"o":0,"avgCost":1238.61,"totCost":29726.61,"medComp":25.6,"avgComp":51.2,"medResp":5.3},"2026-02":{"t":61,"c":61,"x":0,"h":0,"o":0,"avgCost":478.25,"totCost":17216.94,"medComp":8.1,"avgComp":23.1,"medResp":2.4},"2026-03":{"t":117,"c":109,"x":7,"h":1,"o":0,"avgCost":633.96,"totCost":42475.56,"medComp":13.9,"avgComp":33.7,"medResp":7.1}},"HCL2":{"2025-10":{"t":0,"c":0,"x":0,"h":0,"o":0,"avgCost":0,"totCost":0,"medComp":0,"avgComp":0,"medResp":0},"2025-11":{"t":0,"c":0,"x":0,"h":0,"o":0,"avgCost":0,"totCost":0,"medComp":0,"avgComp":0,"medResp":0},"2025-12":{"t":11,"c":5,"x":6,"h":0,"o":0,"avgCost":562.34,"totCost":1124.67,"medComp":214.5,"avgComp":239.6,"medResp":120.5},"2026-01":{"t":75,"c":66,"x":9,"h":0,"o":0,"avgCost":627.24,"totCost":20698.76,"medComp":115.1,"avgComp":136.9,"medResp":36.0},"2026-02":{"t":93,"c":88,"x":5,"h":0,"o":0,"avgCost":1368.92,"totCost":53387.96,"medComp":61.2,"avgComp":128.9,"medResp":22.8},"2026-03":{"t":116,"c":109,"x":4,"h":0,"o":3,"avgCost":1319.51,"totCost":72573.0,"medComp":39.5,"avgComp":80.6,"medResp":13.3}},"HCT2":{"2025-10":{"t":9,"c":8,"x":1,"h":0,"o":0,"avgCost":322.33,"totCost":1611.63,"medComp":41.4,"avgComp":72.3,"medResp":4.4},"2025-11":{"t":18,"c":18,"x":0,"h":0,"o":0,"avgCost":551.02,"totCost":6061.18,"medComp":54.2,"avgComp":84.5,"medResp":29.2},"2025-12":{"t":27,"c":24,"x":3,"h":0,"o":0,"avgCost":1264.07,"totCost":15168.88,"medComp":38.9,"avgComp":47.3,"medResp":12.7},"2026-01":{"t":23,"c":21,"x":2,"h":0,"o":0,"avgCost":1531.98,"totCost":12255.81,"medComp":38.1,"avgComp":70.1,"medResp":22.5},"2026-02":{"t":21,"c":21,"x":0,"h":0,"o":0,"avgCost":774.19,"totCost":9290.28,"medComp":24.2,"avgComp":34.0,"medResp":8.9},"2026-03":{"t":62,"c":61,"x":1,"h":0,"o":0,"avgCost":575.65,"totCost":18996.44,"medComp":8.4,"avgComp":21.3,"medResp":1.5}},"HDT3":{"2025-10":{"t":67,"c":56,"x":11,"h":0,"o":0,"avgCost":599.12,"totCost":26361.48,"medComp":59.8,"avgComp":102.5,"medResp":30.3},"2025-11":{"t":45,"c":39,"x":6,"h":0,"o":0,"avgCost":812.84,"totCost":22759.64,"medComp":65.2,"avgComp":91.5,"medResp":10.3},"2025-12":{"t":78,"c":71,"x":7,"h":0,"o":0,"avgCost":706.14,"totCost":33188.74,"medComp":32.2,"avgComp":54.8,"medResp":12.3},"2026-01":{"t":114,"c":111,"x":3,"h":0,"o":0,"avgCost":843.55,"totCost":51456.3,"medComp":38.4,"avgComp":68.8,"medResp":14.1},"2026-02":{"t":112,"c":105,"x":7,"h":0,"o":0,"avgCost":874.08,"totCost":71674.43,"medComp":31.7,"avgComp":59.3,"medResp":9.0},"2026-03":{"t":175,"c":166,"x":9,"h":0,"o":0,"avgCost":637.12,"totCost":77091.3,"medComp":10.6,"avgComp":24.2,"medResp":5.2}},"HDY1":{"2025-10":{"t":4,"c":3,"x":1,"h":0,"o":0,"avgCost":157.39,"totCost":157.39,"medComp":22.6,"avgComp":56.5,"medResp":17.9},"2025-11":{"t":11,"c":8,"x":3,"h":0,"o":0,"avgCost":1120.77,"totCost":5603.85,"medComp":144.9,"avgComp":209.0,"medResp":15.4},"2025-12":{"t":41,"c":37,"x":4,"h":0,"o":0,"avgCost":1211.76,"totCost":9694.11,"medComp":65.3,"avgComp":96.9,"medResp":19.6},"2026-01":{"t":34,"c":32,"x":2,"h":0,"o":0,"avgCost":814.24,"totCost":10585.06,"medComp":42.5,"avgComp":71.7,"medResp":27.8},"2026-02":{"t":49,"c":46,"x":3,"h":0,"o":0,"avgCost":657.71,"totCost":9207.88,"medComp":60.6,"avgComp":75.6,"medResp":25.4},"2026-03":{"t":86,"c":84,"x":1,"h":1,"o":0,"avgCost":617.73,"totCost":24091.42,"medComp":28.5,"avgComp":62.3,"medResp":9.4}},"HHO3":{"2025-10":{"t":0,"c":0,"x":0,"h":0,"o":0,"avgCost":0,"totCost":0,"medComp":0,"avgComp":0,"medResp":0},"2025-11":{"t":58,"c":49,"x":9,"h":0,"o":0,"avgCost":1022.22,"totCost":20444.49,"medComp":98.5,"avgComp":141.2,"medResp":11.8},"2025-12":{"t":78,"c":66,"x":12,"h":0,"o":0,"avgCost":684.09,"totCost":24627.12,"medComp":27.1,"avgComp":57.4,"medResp":9.7},"2026-01":{"t":76,"c":74,"x":2,"h":0,"o":0,"avgCost":405.19,"totCost":19854.17,"medComp":25.7,"avgComp":40.8,"medResp":7.8},"2026-02":{"t":81,"c":74,"x":7,"h":0,"o":0,"avgCost":718.06,"totCost":33030.57,"medComp":39.0,"avgComp":83.2,"medResp":15.8},"2026-03":{"t":138,"c":105,"x":20,"h":1,"o":12,"avgCost":683.51,"totCost":44428.2,"medComp":22.0,"avgComp":55.9,"medResp":9.0}},"HIN3":{"2025-10":{"t":20,"c":15,"x":5,"h":0,"o":0,"avgCost":608.79,"totCost":8523.12,"medComp":14.6,"avgComp":57.4,"medResp":5.9},"2025-11":{"t":12,"c":7,"x":5,"h":0,"o":0,"avgCost":938.51,"totCost":3754.02,"medComp":97.9,"avgComp":157.0,"medResp":28.4},"2025-12":{"t":16,"c":15,"x":1,"h":0,"o":0,"avgCost":840.95,"totCost":5886.65,"medComp":52.5,"avgComp":67.4,"medResp":18.4},"2026-01":{"t":9,"c":8,"x":1,"h":0,"o":0,"avgCost":606.64,"totCost":1819.91,"medComp":10.6,"avgComp":22.9,"medResp":7.4},"2026-02":{"t":13,"c":9,"x":4,"h":0,"o":0,"avgCost":2044.07,"totCost":12264.43,"medComp":7.0,"avgComp":69.9,"medResp":1.8},"2026-03":{"t":14,"c":3,"x":11,"h":0,"o":0,"avgCost":210.0,"totCost":210.0,"medComp":12.1,"avgComp":13.1,"medResp":2.7}},"HLA2":{"2025-10":{"t":0,"c":0,"x":0,"h":0,"o":0,"avgCost":0,"totCost":0,"medComp":0,"avgComp":0,"medResp":0},"2025-11":{"t":41,"c":35,"x":6,"h":0,"o":0,"avgCost":666.89,"totCost":6001.98,"medComp":248.4,"avgComp":270.5,"medResp":18.3},"2025-12":{"t":91,"c":80,"x":11,"h":0,"o":0,"avgCost":767.46,"totCost":27628.55,"medComp":29.3,"avgComp":69.2,"medResp":14.4},"2026-01":{"t":133,"c":129,"x":4,"h":0,"o":0,"avgCost":634.34,"totCost":26642.46,"medComp":17.4,"avgComp":30.4,"medResp":9.2},"2026-02":{"t":193,"c":179,"x":14,"h":0,"o":0,"avgCost":606.15,"totCost":64251.54,"medComp":19.4,"avgComp":44.0,"medResp":8.6},"2026-03":{"t":226,"c":213,"x":10,"h":3,"o":0,"avgCost":417.96,"totCost":70635.24,"medComp":10.5,"avgComp":19.0,"medResp":6.4}},"HMK4":{"2025-10":{"t":0,"c":0,"x":0,"h":0,"o":0,"avgCost":0,"totCost":0,"medComp":0,"avgComp":0,"medResp":0},"2025-11":{"t":0,"c":0,"x":0,"h":0,"o":0,"avgCost":0,"totCost":0,"medComp":0,"avgComp":0,"medResp":0},"2025-12":{"t":44,"c":42,"x":2,"h":0,"o":0,"avgCost":443.84,"totCost":3994.6,"medComp":11.4,"avgComp":45.9,"medResp":8.4},"2026-01":{"t":52,"c":49,"x":3,"h":0,"o":0,"avgCost":629.17,"totCost":14470.99,"medComp":20.4,"avgComp":56.5,"medResp":10.9},"2026-02":{"t":39,"c":37,"x":2,"h":0,"o":0,"avgCost":460.97,"totCost":6453.54,"medComp":22.9,"avgComp":50.8,"medResp":10.3},"2026-03":{"t":42,"c":37,"x":1,"h":0,"o":4,"avgCost":641.83,"totCost":17329.46,"medComp":61.0,"avgComp":94.5,"medResp":4.1}},"HMS2":{"2025-10":{"t":56,"c":54,"x":2,"h":0,"o":0,"avgCost":181.26,"totCost":7250.58,"medComp":15.1,"avgComp":34.9,"medResp":10.0},"2025-11":{"t":33,"c":33,"x":0,"h":0,"o":0,"avgCost":1465.78,"totCost":17589.31,"medComp":58.6,"avgComp":125.7,"medResp":10.5},"2025-12":{"t":18,"c":18,"x":0,"h":0,"o":0,"avgCost":636.44,"totCost":6364.45,"medComp":25.7,"avgComp":43.2,"medResp":7.8},"2026-01":{"t":38,"c":31,"x":7,"h":0,"o":0,"avgCost":891.06,"totCost":16039.04,"medComp":34.8,"avgComp":38.5,"medResp":15.4},"2026-02":{"t":19,"c":16,"x":3,"h":0,"o":0,"avgCost":1457.75,"totCost":10204.27,"medComp":57.3,"avgComp":100.7,"medResp":3.6},"2026-03":{"t":23,"c":19,"x":3,"h":1,"o":0,"avgCost":1044.2,"totCost":13574.57,"medComp":22.5,"avgComp":41.8,"medResp":14.8}},"HPD1":{"2025-10":{"t":4,"c":1,"x":3,"h":0,"o":0,"avgCost":1344.49,"totCost":1344.49,"medComp":142.7,"avgComp":142.7,"medResp":0.4},"2025-11":{"t":5,"c":4,"x":1,"h":0,"o":0,"avgCost":37.55,"totCost":37.55,"medComp":65.2,"avgComp":75.4,"medResp":8.6},"2025-12":{"t":3,"c":2,"x":1,"h":0,"o":0,"avgCost":0,"totCost":0.0,"medComp":22.7,"avgComp":22.7,"medResp":2.3},"2026-01":{"t":1,"c":1,"x":0,"h":0,"o":0,"avgCost":0,"totCost":0.0,"medComp":62.0,"avgComp":62.0,"medResp":14.4},"2026-02":{"t":0,"c":0,"x":0,"h":0,"o":0,"avgCost":0,"totCost":0,"medComp":0,"avgComp":0,"medResp":0},"2026-03":{"t":17,"c":9,"x":3,"h":0,"o":5,"avgCost":391.74,"totCost":783.47,"medComp":48.0,"avgComp":68.7,"medResp":34.9}},"HSD2":{"2025-10":{"t":6,"c":5,"x":1,"h":0,"o":0,"avgCost":789.51,"totCost":1579.02,"medComp":18.2,"avgComp":139.0,"medResp":17.6},"2025-11":{"t":0,"c":0,"x":0,"h":0,"o":0,"avgCost":0,"totCost":0,"medComp":0,"avgComp":0,"medResp":0},"2025-12":{"t":1,"c":1,"x":0,"h":0,"o":0,"avgCost":65.0,"totCost":65.0,"medComp":29.7,"avgComp":29.7,"medResp":21.3},"2026-01":{"t":3,"c":1,"x":2,"h":0,"o":0,"avgCost":0,"totCost":0.0,"medComp":39.8,"avgComp":39.8,"medResp":0},"2026-02":{"t":0,"c":0,"x":0,"h":0,"o":0,"avgCost":0,"totCost":0,"medComp":0,"avgComp":0,"medResp":0},"2026-03":{"t":0,"c":0,"x":0,"h":0,"o":0,"avgCost":0,"totCost":0,"medComp":0,"avgComp":0,"medResp":0}},"HSL1":{"2025-10":{"t":20,"c":15,"x":5,"h":0,"o":0,"avgCost":703.53,"totCost":6331.76,"medComp":84.9,"avgComp":106.4,"medResp":16.2},"2025-11":{"t":29,"c":20,"x":9,"h":0,"o":0,"avgCost":613.88,"totCost":4911.06,"medComp":43.4,"avgComp":61.7,"medResp":10.7},"2025-12":{"t":36,"c":33,"x":3,"h":0,"o":0,"avgCost":604.5,"totCost":7253.95,"medComp":8.3,"avgComp":31.1,"medResp":5.0},"2026-01":{"t":21,"c":21,"x":0,"h":0,"o":0,"avgCost":880.75,"totCost":7046.03,"medComp":11.9,"avgComp":40.1,"medResp":9.0},"2026-02":{"t":38,"c":35,"x":3,"h":0,"o":0,"avgCost":539.4,"totCost":9169.82,"medComp":29.4,"avgComp":47.0,"medResp":6.3},"2026-03":{"t":51,"c":46,"x":4,"h":0,"o":1,"avgCost":426.56,"totCost":7251.5,"medComp":10.5,"avgComp":25.1,"medResp":6.5}},"HTP2":{"2025-10":{"t":60,"c":55,"x":5,"h":0,"o":0,"avgCost":534.05,"totCost":24566.32,"medComp":143.2,"avgComp":165.3,"medResp":44.3},"2025-11":{"t":73,"c":54,"x":19,"h":0,"o":0,"avgCost":1056.25,"totCost":32743.61,"medComp":90.8,"avgComp":115.3,"medResp":21.9},"2025-12":{"t":94,"c":86,"x":8,"h":0,"o":0,"avgCost":787.28,"totCost":30703.98,"medComp":47.4,"avgComp":78.3,"medResp":21.5},"2026-01":{"t":53,"c":49,"x":4,"h":0,"o":0,"avgCost":874.72,"totCost":19243.76,"medComp":28.1,"avgComp":45.5,"medResp":8.8},"2026-02":{"t":78,"c":74,"x":4,"h":0,"o":0,"avgCost":631.43,"totCost":30308.42,"medComp":23.7,"avgComp":57.1,"medResp":11.0},"2026-03":{"t":155,"c":143,"x":2,"h":7,"o":3,"avgCost":590.89,"totCost":59089.42,"medComp":20.0,"avgComp":39.2,"medResp":4.6}},"OVERALL":{"2025-10":{"t":256,"c":220,"x":36,"h":0,"o":0,"avgCost":486.16,"totCost":81188.58,"medComp":44.7,"avgComp":100.3,"medResp":16.2},"2025-11":{"t":339,"c":276,"x":63,"h":0,"o":0,"avgCost":907.54,"totCost":122517.61,"medComp":74.2,"avgComp":136.4,"medResp":12.9},"2025-12":{"t":566,"c":505,"x":61,"h":0,"o":0,"avgCost":745.38,"totCost":172182.24,"medComp":30.2,"avgComp":62.4,"medResp":10.9},"2026-01":{"t":677,"c":634,"x":43,"h":0,"o":0,"avgCost":756.05,"totCost":229838.9,"medComp":30.1,"avgComp":57.7,"medResp":10.8},"2026-02":{"t":797,"c":745,"x":52,"h":0,"o":0,"avgCost":764.54,"totCost":326460.07,"medComp":26.4,"avgComp":63.3,"medResp":8.4},"2026-03":{"t":1222,"c":1104,"x":76,"h":14,"o":28,"avgCost":632.62,"totCost":448529.57,"medComp":16.0,"avgComp":40.4,"medResp":6.1}}}};
+var WOW={"weeks":["2025-W41","2025-W42","2025-W43","2025-W44","2025-W45","2025-W46","2025-W47","2025-W48","2025-W49","2025-W50","2025-W51","2025-W52","2026-W01","2026-W02","2026-W03","2026-W04","2026-W05","2026-W06","2026-W07","2026-W08","2026-W09","2026-W10","2026-W11"],"overall":[43,84,46,84,62,95,121,52,115,116,130,86,179,141,141,174,165,201,206,186,210,344,291],"stations":{"HAU1":[0,0,6,5,3,3,6,1,1,11,6,3,12,12,16,10,2,6,25,12,18,39,37],"HCL2":[0,0,0,0,0,0,0,0,0,0,0,3,17,17,19,10,20,30,28,21,14,50,17],"HCT2":[0,1,0,8,8,1,7,2,7,8,7,1,5,4,2,11,5,1,0,11,9,36,11],"HDT3":[14,22,11,21,3,27,11,3,16,19,15,8,26,22,17,29,41,30,28,27,30,53,32],"HDY1":[0,0,0,5,2,0,5,3,5,5,9,6,25,12,5,7,2,3,8,18,20,24,22],"HHO3":[0,0,0,0,10,19,18,11,23,20,11,11,18,19,18,23,12,20,32,14,14,27,55],"HIN3":[7,11,1,1,2,1,5,4,6,1,3,4,4,2,2,3,0,10,0,1,2,0,0],"HLA2":[0,0,0,0,1,17,20,2,13,12,26,21,26,19,28,39,46,55,46,42,54,40,52],"HMK4":[0,0,0,0,0,0,0,0,0,4,22,7,24,7,12,7,12,5,15,6,13,14,13],"HMS2":[12,16,13,15,8,1,19,4,6,6,1,1,5,5,6,21,5,1,5,8,4,0,8],"HPD1":[1,1,1,1,1,2,1,1,3,0,0,0,0,0,0,0,1,0,0,0,0,3,0],"HSL1":[2,8,6,6,6,2,10,9,5,10,10,8,3,4,4,4,9,8,9,11,10,3,22],"HTP2":[7,25,8,22,18,22,19,12,30,20,20,13,14,18,12,10,10,32,10,15,22,55,22]}};
+var ADOPTION={"HTP2":{"station":"HTP2","location":"Gibsonton, FL","kooner":89,"leaked":18,"adoption":83.2},"HSL1":{"station":"HSL1","location":"Salt Lake City, UT","kooner":30,"leaked":2,"adoption":93.8},"HHO3":{"station":"HHO3","location":"Porter, TX","kooner":96,"leaked":24,"adoption":80.0},"HDY1":{"station":"HDY1","location":"Clayton, OH","kooner":54,"leaked":13,"adoption":80.6},"HCT2":{"station":"HCT2","location":"Chattanooga, TN","kooner":24,"leaked":4,"adoption":85.7},"HCL2":{"station":"HCL2","location":"Charlotte, NC","kooner":70,"leaked":62,"adoption":53.0},"HDT3":{"station":"HDT3","location":"Romulus, MI","kooner":152,"leaked":141,"adoption":51.9},"HMS2":{"station":"HMS2","location":"Lakeville, MN","kooner":37,"leaked":33,"adoption":52.9},"HIN3":{"station":"HIN3","location":"South Bend, IN","kooner":16,"leaked":20,"adoption":44.4},"HLA2":{"station":"HLA2","location":"Santa Clarita, CA","kooner":189,"leaked":250,"adoption":43.1},"HAU1":{"station":"HAU1","location":"Austin, TX","kooner":53,"leaked":78,"adoption":40.5},"HPD1":{"station":"HPD1","location":"Portland, OR","kooner":1,"leaked":34,"adoption":2.9}};
+var SENTIMENT=[{"dsp":"ALAB","station":"HDT3","responses":2,"sat":3.0,"time":2.5,"qual":3.0,"avg":2.83},{"dsp":"ARMA","station":"HLA2","responses":8,"sat":2.9,"time":2.9,"qual":3.0,"avg":2.93},{"dsp":"D4DS","station":"HCL2","responses":1,"sat":5.0,"time":5.0,"qual":5.0,"avg":5.0},{"dsp":"MAEP","station":"HIN3","responses":1,"sat":2.0,"time":2.0,"qual":3.0,"avg":2.33},{"dsp":"ORMP","station":"HTP2","responses":3,"sat":2.3,"time":1.7,"qual":3.0,"avg":2.33},{"dsp":"PRLC","station":"HSL1","responses":1,"sat":4.0,"time":5.0,"qual":3.0,"avg":4.0},{"dsp":"SFRM","station":"HDT3","responses":7,"sat":3.0,"time":2.9,"qual":3.3,"avg":3.07},{"dsp":"TWLD","station":"HDY1","responses":1,"sat":4.0,"time":4.0,"qual":5.0,"avg":4.33}];
+var FEEDBACK=[{"date":"Mar 30","dsp":"ORMP","station":"HTP2","sat":3,"time":1,"qual":3,"issue":"905 - 1FDDF6P86MKA70641 PM was submitted to Kooner on 3/23. The PM was overdue and escalated to David 3/25, 3/27 and 3/28 PM was never completed after those escalations and was not completed until tod\u2026","suggestion":"Van PMs only have a 1K mile window to be completed, while we have routes that go up to 300 miles a day. We have 2 vans currently at risk of being grounded. Amazon grounds vehicles once they're 500 mil\u2026"},{"date":"Mar 23","dsp":"SFRM","station":"HDT3","sat":2,"time":2,"qual":3,"issue":"-Unit 4812 has been down for roughly 2 weeks. Original issue was finally resolved this past Friday only for tech to have broken two rear lug studs. He replaced one and left the other dwelling through \u2026","suggestion":"I was advised by both Kooner techs that we need to put in WOs for tire changes.  Example, I am supposed to put in a work order to have wheel removed, then have Goodyear replace tire, to then have to p\u2026"},{"date":"Mar 16","dsp":"SFRM","station":"HDT3","sat":3,"time":3,"qual":3,"issue":"Yes, 4812 is still waiting to be fixed in yard due to leaf spring issue.","suggestion":""},{"date":"Mar 11","dsp":"SFRM","station":"HDT3","sat":3,"time":4,"qual":4,"issue":"Only issue I can recall is the lag there is come Friday/Saturday. We will get quite a few issues that pop up over the weekend days. Units will then sit for 48 hours before diagnosis even begins.","suggestion":"Better training on what is required for mandatory Amazon PMs. Lots of time wasted looking for clarity on what service needs to be done and if it even in the scope of what they can do only being mobile\u2026"},{"date":"Mar 10","dsp":"TWLD","station":"HDY1","sat":4,"time":4,"qual":5,"issue":"","suggestion":"moving service hour to 12 am - 8 am has been a great help to smoothing over PM's for our DSP"},{"date":"Mar 9","dsp":"ARMA","station":"HLA2","sat":4,"time":4,"qual":3,"issue":"","suggestion":"No compaints"},{"date":"Mar 2","dsp":"ALAB","station":"HDT3","sat":5,"time":4,"qual":5,"issue":"The main issue we are facing right now is vehicles that get grounded or have issues on Fridays, Saturdays, and Sundays can't/are not getting serviced untill Monday.","suggestion":"Support on weekends."},{"date":"Feb 23","dsp":"ARMA","station":"HLA2","sat":3,"time":3,"qual":4,"issue":"No solution on Back-doors due to back-orders.  We have grounded trucks.","suggestion":"Have common parts available on site."},{"date":"Feb 16","dsp":"SFRM","station":"HDT3","sat":3,"time":2,"qual":4,"issue":"Yes; Unit 0160- Grounded on 02/11 for poor engine performance. Has still yet to be even diagnosed by tech Unit 5768- Grounded on 02/09 for HVAC issues. Still awaiting completed repairs on this due to \u2026","suggestion":"Yes, more bodies. Between the 2 DSPs I feel the techs are stretched super thin. No work done or started on the weekends are a big delay in getting units diagnosed or getting parts ordered and ready fo\u2026"},{"date":"Feb 10","dsp":"SFRM","station":"HDT3","sat":4,"time":4,"qual":4,"issue":"Unit 2974 has not been looked at for a few days and is still pending diagnostics","suggestion":"More availability for weekend issues, over the road calls for branded unit break downs"},{"date":"Feb 9","dsp":"ORMP","station":"HTP2","sat":2,"time":2,"qual":4,"issue":"Multiple WOs that were submitted last week still haven't been looked at yet. No work has been completed since 2/4. We have multiple vehicles down with no ETA or visibility into the current status. Our\u2026","suggestion":""},{"date":"Feb 9","dsp":"ARMA","station":"HLA2","sat":5,"time":5,"qual":5,"issue":"We had a couple issues with our Box Trucks.  We submitted the Repair Ticket and Jose Madrigal took care of it in a timely manner.","suggestion":"Not at this time. Thank you for tremendously improving your Services."},{"date":"Feb 2","dsp":"SFRM","station":"HDT3","sat":3,"time":3,"qual":3,"issue":"","suggestion":"2 day time techs would be ideal. A lot of time during the day IMO is spent diagnosing, submitting approvals, and running around getting parts. It is not ideal to have units sitting and waiting for the\u2026"},{"date":"Jan 26","dsp":"ALAB","station":"HDT3","sat":1,"time":1,"qual":1,"issue":"We have experienced a lack of timely repairs.  WE are also experiencing multiple instances where vehicles are repaired, however the same issue presents immediately after ungrounding.","suggestion":"Timely and complete repairs."},{"date":"Jan 12","dsp":"ARMA","station":"HLA2","sat":1,"time":1,"qual":1,"issue":"No work orders submitted","suggestion":""},{"date":"Jan 12","dsp":"D4DS","station":"HCL2","sat":5,"time":5,"qual":5,"issue":"","suggestion":"We had rolled out a week or so ago and the mechanic was out due to previous commitments.  Supervisor drove out and was able to get more vehicles up and running in one evening than any mechanic we have\u2026"},{"date":"Jan 6","dsp":"ORMP","station":"HTP2","sat":2,"time":2,"qual":2,"issue":"Truck 210 - Wires hanging from back door MCS says the work was completed 7 days ago, but we haven't received any paperwork/communication from Kooner  CDV 2238 - Brakes WO was opened 12/12 After 17 day\u2026","suggestion":"Ideally we should have access to a schedule to see when repairs are being worked on, be able to reschedule repairs based on our needs and get emails when notes are added to a WO or when a WO status ch\u2026"},{"date":"Jan 6","dsp":"PRLC","station":"HSL1","sat":4,"time":5,"qual":3,"issue":"","suggestion":"Yes, from the moment that we put in a service request to getting the vehicle back on the road mechanically, that is smooth as can be. Techs are great at communication and getting the truck fixed. The \u2026"},{"date":"Jan 5","dsp":"ARMA","station":"HLA2","sat":1,"time":1,"qual":1,"issue":"This week there was no work order that has been put in for neither of my vehicles.","suggestion":"Communication, completing work on time, and making sure that whatever issues is being worked on actually gets fixed."},{"date":"Jan 5","dsp":"SFRM","station":"HDT3","sat":3,"time":2,"qual":2,"issue":"","suggestion":"I feel there needs to be better field supervision of the technicians. Who is validating the completeness and quality of their work?"},{"date":"Dec 30","dsp":"MAEP","station":"HIN3","sat":2,"time":2,"qual":3,"issue":"Most issues we take to Kooner are not resolved.  We needed brake repairs and the wrong part came in and then something else was found.  In the end, we towed the vehicle to dealership.  Kooner complete\u2026","suggestion":""}];
 
-// Season-to-date summary per station (10/6/25 – 3/28/26, completed WOs only for TAT)
-var STATION_SUMMARY = {
-  HLA2:{total:684,comp:636,canc:45,open:3,medTat:0.7,avgTat:2.0,box:447,cargo:131,tractor:58,
-    topTechs:{"LM - Jose Madrigal":344,"LM - Justin Forte":100,"Fresno - Nicholas Darter":80},
-    location:"Santa Clarita, CA"},
-  HDT3:{total:591,comp:548,canc:43,open:0,medTat:1.3,avgTat:2.4,box:256,cargo:269,tractor:23,
-    topTechs:{"LM - Terence Lucas":284,"LM - Thomas McRoberts":239,"IN - David Ross":6},
-    location:"Romulus, MI"},
-  HTP2:{total:513,comp:461,canc:42,open:10,medTat:1.4,avgTat:3.1,box:181,cargo:50,tractor:230,
-    topTechs:{"LM - Jett Bukovac":152,"LM - Hector Brito":98,"Jessamine Rodriguez":93},
-    location:"Gibsonton, FL"},
-  HHO3:{total:431,comp:368,canc:50,open:13,medTat:1.3,avgTat:3.1,box:111,cargo:43,tractor:214,
-    topTechs:{"LM - Evereth Salas":221,"LM - Lamont Henderson":71,"LM - Sabrina Finch":34},
-    location:"Porter, TX"},
-  HCL2:{total:295,comp:268,canc:24,open:3,medTat:2.6,avgTat:5.1,box:268,cargo:0,tractor:0,
-    topTechs:{"LM NC - Justin Owens":144,"Macon GA - Justin Owens":28,"LM - Eugene Fowler":22},
-    location:"Charlotte, NC"},
-  HAU1:{total:275,comp:253,canc:21,open:1,medTat:0.6,avgTat:1.8,box:223,cargo:8,tractor:22,
-    topTechs:{"LM - Fernando Cruz":170,"LM - Brooks Lawson":79,"LM - Kelsey Githens":2},
-    location:"Austin, TX"},
-  HDY1:{total:225,comp:210,canc:14,open:1,medTat:1.8,avgTat:3.3,box:197,cargo:12,tractor:1,
-    topTechs:{"OH - Charles Burgess":119,"LM - Timothy Merritt":42,"LM - Victor Wells":18},
-    location:"Clayton, OH"},
-  HSL1:{total:195,comp:170,canc:24,open:1,medTat:1.0,avgTat:1.8,box:106,cargo:59,tractor:5,
-    topTechs:{"LM - Marcos Tun":161,"SLC - Dakota Theademan":3,"SLC - Torrey Watson":1},
-    location:"Salt Lake City, UT"},
-  HMS2:{total:187,comp:171,canc:15,open:1,medTat:1.3,avgTat:2.5,box:80,cargo:17,tractor:74,
-    topTechs:{"Last Mile - Joseph Defreeuw":41,"FM - Eugene Fowler":41,"Last Mile - Brad Butti":17},
-    location:"Lakeville, MN"},
-  HMK4:{total:177,comp:165,canc:8,open:4,medTat:0.9,avgTat:2.8,box:165,cargo:0,tractor:0,
-    topTechs:{"LM - Alejandro Fernandez":139,"LM - William Low":26},
-    location:"New Berlin, WI"},
-  HCT2:{total:160,comp:153,canc:7,open:0,medTat:1.0,avgTat:1.8,box:98,cargo:12,tractor:43,
-    topTechs:{"LM - Alexander Childs":51,"LM - Cletus Harvey":30,"LM - Eugene Fowler":22},
-    location:"Chattanooga, TN"},
-  HIN3:{total:84,comp:57,canc:27,open:0,medTat:1.0,avgTat:2.8,box:24,cargo:8,tractor:25,
-    topTechs:{"LM - Victor Wells":38,"Last Mile - John Weaver":8,"IN - David Ross":3},
-    location:"South Bend, IN"},
-  HPD1:{total:30,comp:17,canc:8,open:5,medTat:2.2,avgTat:2.9,box:12,cargo:0,tractor:5,
-    topTechs:{"CORE - Michael Ward":12,"Last Mile - N. Marzouki":4},
-    location:"Portland, OR"},
-};
 
-// Monthly data per station (t=total created, c=completed, x=cancelled, medComp/avgComp in hours)
-var MOM = {
-  OVERALL:{
-    "2025-10":{t:256,c:172,x:36,medComp:32.4,avgComp:62.8},
-    "2025-11":{t:339,c:266,x:63,medComp:74.1,avgComp:110.2},
-    "2025-12":{t:566,c:496,x:61,medComp:30.6,avgComp:87.2},
-    "2026-01":{t:677,c:655,x:43,medComp:30.7,avgComp:58.6},
-    "2026-02":{t:798,c:735,x:52,medComp:26.7,avgComp:63.3},
-    "2026-03":{t:1222,c:1161,x:76,medComp:17.5,avgComp:49.2},
-  },
-  HLA2:{"2025-10":{t:0,c:0,x:0,medComp:0,avgComp:0},"2025-11":{t:41,c:18,x:6,medComp:74.1,avgComp:79.6},"2025-12":{t:91,c:86,x:11,medComp:33.4,avgComp:136.9},"2026-01":{t:133,c:135,x:4,medComp:18.1,avgComp:40.1},"2026-02":{t:193,c:178,x:14,medComp:20.5,avgComp:43.1},"2026-03":{t:226,c:219,x:10,medComp:10.9,avgComp:20.8}},
-  HDT3:{"2025-10":{t:67,c:48,x:11,medComp:54.0,avgComp:76.0},"2025-11":{t:45,c:43,x:6,medComp:71.8,avgComp:112.1},"2025-12":{t:78,c:69,x:7,medComp:32.2,avgComp:61.2},"2026-01":{t:114,c:111,x:3,medComp:37.8,avgComp:60.5},"2026-02":{t:112,c:104,x:7,medComp:31.4,avgComp:65.2},"2026-03":{t:175,c:173,x:9,medComp:11.4,avgComp:28.2}},
-  HTP2:{"2025-10":{t:60,c:36,x:5,medComp:51.5,avgComp:101.4},"2025-11":{t:73,c:65,x:19,medComp:127.1,avgComp:151.2},"2025-12":{t:94,c:86,x:8,medComp:46.8,avgComp:79.2},"2026-01":{t:53,c:55,x:4,medComp:30.0,avgComp:69.2},"2026-02":{t:78,c:71,x:4,medComp:20.1,avgComp:49.5},"2026-03":{t:155,c:148,x:2,medComp:20.6,avgComp:43.9}},
-  HHO3:{"2025-10":{t:0,c:0,x:0,medComp:0,avgComp:0},"2025-11":{t:58,c:38,x:9,medComp:52.5,avgComp:100.7},"2025-12":{t:78,c:72,x:12,medComp:31.0,avgComp:113.1},"2026-01":{t:76,c:75,x:2,medComp:26.1,avgComp:36.9},"2026-02":{t:81,c:71,x:7,medComp:34.5,avgComp:72.2},"2026-03":{t:138,c:112,x:20,medComp:24.6,avgComp:68.8}},
-  HCL2:{"2025-10":{t:0,c:0,x:0,medComp:0,avgComp:0},"2025-11":{t:0,c:0,x:0,medComp:0,avgComp:0},"2025-12":{t:11,c:1,x:6,medComp:121.1,avgComp:121.1},"2026-01":{t:75,c:54,x:9,medComp:122.5,avgComp:128.2},"2026-02":{t:93,c:97,x:5,medComp:75.5,avgComp:138.3},"2026-03":{t:116,c:116,x:4,medComp:50.0,avgComp:107.2}},
-  HAU1:{"2025-10":{t:10,c:5,x:2,medComp:41.0,avgComp:36.5},"2025-11":{t:14,c:10,x:5,medComp:118.6,avgComp:181.9},"2025-12":{t:28,c:22,x:3,medComp:20.1,avgComp:65.2},"2026-01":{t:45,c:45,x:4,medComp:30.0,avgComp:48.6},"2026-02":{t:61,c:61,x:0,medComp:8.1,avgComp:19.8},"2026-03":{t:117,c:110,x:7,medComp:13.9,avgComp:36.5}},
-  HDY1:{"2025-10":{t:4,c:1,x:1,medComp:22.6,avgComp:22.6},"2025-11":{t:11,c:6,x:3,medComp:37.8,avgComp:61.4},"2025-12":{t:41,c:26,x:4,medComp:57.2,avgComp:104.7},"2026-01":{t:34,c:46,x:2,medComp:57.2,avgComp:98.3},"2026-02":{t:49,c:37,x:3,medComp:36.8,avgComp:50.6},"2026-03":{t:86,c:94,x:1,medComp:33.3,avgComp:73.6}},
-  HSL1:{"2025-10":{t:20,c:12,x:5,medComp:56.5,avgComp:90.1},"2025-11":{t:29,c:21,x:9,medComp:46.2,avgComp:65.0},"2025-12":{t:36,c:34,x:3,medComp:8.4,avgComp:39.8},"2026-01":{t:21,c:18,x:0,medComp:11.2,avgComp:20.4},"2026-02":{t:38,c:36,x:3,medComp:29.7,avgComp:50.1},"2026-03":{t:51,c:49,x:4,medComp:10.7,avgComp:31.2}},
-  HMS2:{"2025-10":{t:56,c:48,x:2,medComp:15.4,avgComp:34.8},"2025-11":{t:33,c:33,x:0,medComp:36.7,avgComp:72.4},"2025-12":{t:18,c:21,x:0,medComp:46.3,avgComp:117.8},"2026-01":{t:38,c:33,x:7,medComp:34.8,avgComp:43.3},"2026-02":{t:19,c:13,x:3,medComp:42.0,avgComp:43.4},"2026-03":{t:23,c:23,x:3,medComp:29.4,avgComp:81.9}},
-  HMK4:{"2025-10":{t:0,c:0,x:0,medComp:0,avgComp:0},"2025-11":{t:0,c:0,x:0,medComp:0,avgComp:0},"2025-12":{t:44,c:37,x:2,medComp:9.9,avgComp:35.4},"2026-01":{t:52,c:52,x:3,medComp:20.6,avgComp:54.3},"2026-02":{t:39,c:32,x:2,medComp:40.2,avgComp:71.0},"2026-03":{t:42,c:44,x:1,medComp:49.3,avgComp:108.3}},
-  HCT2:{"2025-10":{t:9,c:5,x:1,medComp:30.1,avgComp:24.4},"2025-11":{t:18,c:20,x:0,medComp:54.2,avgComp:81.5},"2025-12":{t:27,c:24,x:3,medComp:38.9,avgComp:59.0},"2026-01":{t:23,c:18,x:2,medComp:37.5,avgComp:37.1},"2026-02":{t:21,c:25,x:0,medComp:35.8,avgComp:63.4},"2026-03":{t:62,c:61,x:1,medComp:8.4,avgComp:21.3}},
-  HIN3:{"2025-10":{t:20,c:14,x:5,medComp:13.5,avgComp:27.5},"2025-11":{t:12,c:5,x:5,medComp:52.3,avgComp:143.6},"2025-12":{t:16,c:15,x:1,medComp:52.5,avgComp:92.9},"2026-01":{t:9,c:11,x:1,medComp:21.0,avgComp:59.8},"2026-02":{t:13,c:9,x:4,medComp:7.0,avgComp:69.9},"2026-03":{t:14,c:3,x:11,medComp:12.1,avgComp:13.1}},
-  HPD1:{"2025-10":{t:4,c:0,x:3,medComp:0,avgComp:0},"2025-11":{t:5,c:5,x:1,medComp:78.4,avgComp:88.8},"2025-12":{t:3,c:2,x:1,medComp:22.7,avgComp:22.7},"2026-01":{t:1,c:1,x:0,medComp:62.0,avgComp:62.0},"2026-02":{t:0,c:0,x:0,medComp:0,avgComp:0},"2026-03":{t:17,c:9,x:3,medComp:48.0,avgComp:68.7}},
-};
+  var stns=Object.keys(WO.stations).sort();
+  var recentWks=['2026-W07','2026-W08','2026-W09','2026-W10'];
 
-// Weekly completed WOs per station
-var WEEKLY = {
-  HLA2: [0,0,0,0,0,1,16,1,11,26,20,12,26,20,23,42,42,37,44,50,50,46,56,73,38],
-  HDT3: [8,13,15,13,6,21,11,4,13,18,16,4,28,16,17,24,44,24,21,35,24,57,31,41,43],
-  HTP2: [1,20,5,10,20,20,11,14,21,29,12,12,18,19,8,15,9,20,13,20,16,58,23,30,34],
-  HHO3: [0,0,0,0,3,8,15,12,22,20,16,8,13,22,14,21,11,15,24,16,17,22,41,24,21],
-  HCL2: [0,0,0,0,0,0,0,0,0,0,0,0,2,13,21,8,13,14,23,38,20,33,25,24,33],
-  HAU1: [0,0,1,5,1,4,0,4,2,10,3,5,9,11,10,14,3,6,25,12,18,30,39,22,19],
-  HDY1: [0,0,0,2,3,0,1,1,4,8,7,5,14,17,10,6,1,5,6,9,17,25,22,23,20],
-  HSL1: [0,4,6,3,8,2,5,5,5,12,7,8,3,4,3,5,5,10,8,10,8,5,23,6,14],
-  HMS2: [10,15,13,14,5,2,15,7,7,11,1,0,4,6,5,16,5,1,2,7,3,3,3,9,7],
-  HMK4: [0,0,0,0,0,0,0,0,0,1,22,7,19,7,15,3,15,2,12,10,14,8,13,11,6],
-  HCT2: [0,1,0,5,6,4,6,3,3,5,10,3,4,2,5,7,3,4,1,6,14,35,12,7,7],
-  HIN3: [3,10,1,0,0,2,3,0,5,3,1,6,1,5,2,2,1,5,0,1,3,0,0,3,0],
-  HPD1: [0,0,0,0,1,1,2,1,2,0,0,0,0,0,0,0,1,0,0,0,0,3,0,3,3],
-};
-
-var STATIONS = Object.keys(STATION_SUMMARY);
-var cur = 'OVERALL';
-var chartInstances = [];
-
-// Helpers
+var cur='OVERALL',names=Object.keys(WO.stations).sort(),chartInstances=[];
+var MLABELS=MOM.months.map(function(m){var p=m.split('-');return['Oct','Nov','Dec','Jan','Feb','Mar'][MOM.months.indexOf(m)]+" '"+p[0].slice(2)});
+function gm(k){return k==='OVERALL'?WO.overall:WO.stations[k]}
 function p2(n,d){return d?(n/d*100).toFixed(1):'0.0'}
 function cc(v,hi){if(hi!==false)return v>=85?'gr':v>=70?'ye':'re';return v<=5?'gr':v<=12?'ye':'re'}
-function tatColor(v){return v===0?'gr':v<=1.5?'gr':v<=3?'ye':'re'}
-function tatBg(v){return v===0?'':v<=1.5?'gr':v<=3?'ye':'re'}
-
+function topN(o,n){return Object.entries(o).sort(function(a,b){return b[1]-a[1]}).slice(0,n||5)}
+function fmt$(v){return'$'+v.toLocaleString(undefined,{minimumFractionDigits:0,maximumFractionDigits:0})}
+function scv(v){return v>=4?'gr':v>=3?'ye':v>=2?'or':'re'}
+function scoreColor(v){return v>=4?'var(--gn)':v>=3?'var(--yl)':v>=2?'var(--or)':'var(--rd)'}
 function deltaTag(curr,prev,inv){
   if(!prev||!curr)return'<span class="delta nt">—</span>';
   var d=curr-prev,pct=prev?(d/prev*100).toFixed(0):'';
@@ -176,51 +115,61 @@ function deltaTag(curr,prev,inv){
   if(Math.abs(d)<0.01)return'<span class="delta nt">0%</span>';
   return'<span class="delta '+(up?'up':'dn')+'">'+(d>0?'+':'')+pct+'%</span>';
 }
-
-function kpi(label,val,colorCls,borderCls,sub){
-  return'<div class="kp '+(borderCls||'')+'"><div class="lb">'+label+'</div><div class="vl '+(colorCls||'')+'">'+val+'</div>'+(sub?'<div class="sb">'+sub+'</div>':'')+'</div>';
-}
-
-function getMoM(stn){
-  var d=MOM[stn];if(!d)return null;
-  return MONTHS.map(function(m){return d[m]||{t:0,c:0,x:0,medComp:0,avgComp:0}});
-}
-
+function kpi(label,val,colorCls,borderCls,sub){return'<div class="kp '+(borderCls||'')+'"><div class="lb">'+label+'</div><div class="vl '+(colorCls||'')+'">'+val+'</div>'+(sub?'<div class="sb">'+sub+'</div>':'')+'</div>'}
+function getMoM(stn){var d=MOM.mom[stn];if(!d)return null;var out=[];MOM.months.forEach(function(m){out.push(d[m]||{t:0,c:0,x:0,h:0,o:0,avgCost:0,medComp:0,avgComp:0,medResp:0,totCost:0})});return out;}
 function buildMoMSection(stn){
   var md=getMoM(stn);if(!md)return'';
+  var h='<div class="mom-box"><div class="mom-title">&#x1f4c8; Month-over-Month Trends</div>';
   var last=md[md.length-1],prev=md[md.length-2];
   var compPctLast=last.t?last.c/last.t*100:0,compPctPrev=prev.t?prev.c/prev.t*100:0;
-  var uid=stn.replace(/[^a-zA-Z0-9]/g,'');
-  var h='<div class="mom-box"><div class="mom-title">📈 Month-over-Month Trends</div>';
   h+='<div class="kg" style="margin-bottom:16px">';
   h+='<div class="kp or"><div class="lb">Mar WOs</div><div class="vl">'+last.t+' '+deltaTag(last.t,prev.t)+'</div><div class="sb">Feb: '+prev.t+'</div></div>';
   h+='<div class="kp '+(compPctLast>=85?'gr':compPctLast>=70?'ye':'re')+'"><div class="lb">Mar Completion</div><div class="vl '+cc(compPctLast)+'">'+compPctLast.toFixed(1)+'% '+deltaTag(compPctLast,compPctPrev)+'</div><div class="sb">Feb: '+compPctPrev.toFixed(1)+'%</div></div>';
-  h+='<div class="kp '+(last.medComp<36?'gr':last.medComp<72?'ye':'re')+'"><div class="lb">Mar Med Comp</div><div class="vl">'+last.medComp+'h '+deltaTag(last.medComp,prev.medComp,true)+'</div><div class="sb">Feb: '+prev.medComp+'h</div></div>';
-  h+='<div class="kp '+(last.avgComp<48?'gr':last.avgComp<96?'ye':'re')+'"><div class="lb">Mar Avg Comp</div><div class="vl">'+last.avgComp+'h '+deltaTag(last.avgComp,prev.avgComp,true)+'</div><div class="sb">Feb: '+prev.avgComp+'h</div></div>';
+  h+='<div class="kp '+(last.medComp<36?'gr':last.medComp<72?'ye':'re')+'"><div class="lb">Mar Med Completion</div><div class="vl">'+last.medComp+'h '+deltaTag(last.medComp,prev.medComp,true)+'</div><div class="sb">Feb: '+prev.medComp+'h</div></div>';
+  h+='<div class="kp '+(last.medResp<12?'gr':last.medResp<24?'ye':'re')+'"><div class="lb">Mar Med Response</div><div class="vl">'+last.medResp+'h '+deltaTag(last.medResp,prev.medResp,true)+'</div><div class="sb">Feb: '+prev.medResp+'h</div></div>';
   h+='</div>';
+  var uid=stn.replace(/[^a-zA-Z0-9]/g,'');
   h+='<div class="chart-row"><div class="chart-card"><div class="cc-title">WO Volume &amp; Completion Rate</div><canvas id="momVol_'+uid+'"></canvas></div>';
-  h+='<div class="chart-card"><div class="cc-title">Median Completion Time (hrs)</div><canvas id="momPerf_'+uid+'"></canvas></div></div>';
-  h+='<div class="tw scr"><table><thead><tr><th>Month</th><th>Total WOs</th><th>Comp%</th><th>Cancel%</th><th>Med Comp</th><th>Avg Comp</th></tr></thead><tbody>';
-  MONTHS.forEach(function(m,i){
+  h+=''
+  h+='<div class="mom-table-wrap"><div class="tw scr"><table><thead><tr><th>Month</th><th>WOs</th><th>Comp%</th><th>Canc%</th><th>Med Comp</th><th>Med Resp</th></tr></thead><tbody>';
+  MOM.months.forEach(function(m,i){
     var d2=md[i];
-    if(!d2.t){h+='<tr><td>'+MLABELS[i]+'</td><td colspan="5" style="color:var(--dm)">No data</td></tr>';return}
+    if(!d2.t){h+='<tr><td>'+MLABELS[i]+'</td><td colspan="7" style="color:var(--dm)">No data</td></tr>';return}
     var cpct=d2.t?d2.c/d2.t*100:0,xpct=d2.t?d2.x/d2.t*100:0;
     h+='<tr><td><strong>'+MLABELS[i]+'</strong></td><td>'+d2.t+'</td>';
     h+='<td><span class="bg '+cc(cpct)+'">'+cpct.toFixed(1)+'%</span></td>';
     h+='<td><span class="bg '+cc(xpct,false)+'">'+xpct.toFixed(1)+'%</span></td>';
-    h+='<td>'+d2.medComp+'h</td><td>'+d2.avgComp+'h</td></tr>';
+    h+='<td>'+d2.medComp+'h</td><td>'+d2.medResp+'h</td></tr>';
   });
-  h+='</tbody></table></div></div>';
-  return h;
+  h+='</tbody></table></div></div></div>';return h;
 }
-
+function buildSentimentSection(stn){
+  var sents=stn==='OVERALL'?SENTIMENT:SENTIMENT.filter(function(s){return s.station===stn});
+  var fb=stn==='OVERALL'?FEEDBACK:FEEDBACK.filter(function(f){return f.station===stn});
+  var adopt=stn==='OVERALL'?(function(){var tk=0,tl=0;Object.values(ADOPTION).forEach(function(a){tk+=a.kooner;tl+=a.leaked});return{kooner:tk,leaked:tl,adoption:parseFloat((tk/(tk+tl)*100).toFixed(1))}})():ADOPTION[stn]||null;
+  var h='<div class="sent-box"><div class="sent-title">&#x1f4ac; Sentiment &amp; Adoption</div>';
+  if(adopt){
+    var acolor=adopt.adoption>=85?'var(--gn)':adopt.adoption>=70?'var(--yl)':'var(--rd)';
+    var abg=adopt.adoption>=85?'#059669':adopt.adoption>=70?'#b45309':'#dc2626';
+    h+='<div class="adopt-bar"><div class="ab-lbl">Adoption</div><div class="ab-track"><div class="ab-fill" style="width:'+adopt.adoption+'%;background:'+abg+'">'+adopt.adoption+'%</div><div class="ab-target" title="85% Target"></div></div><div class="ab-val" style="color:'+acolor+'">'+adopt.adoption+'%</div></div>';
+    h+='<div style="display:flex;gap:16px;margin-bottom:14px;font-size:11px;color:var(--mu)"><span>Kooner: <strong style="color:var(--gn)">'+adopt.kooner+'</strong></span><span>Leaked: <strong style="color:var(--rd)">'+adopt.leaked+'</strong></span><span>Target: <strong style="color:var(--yl)">85%</strong></span></div>';
+  }else{h+='<div style="margin-bottom:14px;font-size:11px;color:var(--dm);font-style:italic">No Kooner adoption data for this station</div>'}
+  if(sents.length>0){
+    var tr2=0,aS=0,aT=0,aQ=0,aA=0;sents.forEach(function(s){tr2+=s.responses;aS+=s.sat*s.responses;aT+=s.time*s.responses;aQ+=s.qual*s.responses;aA+=s.avg*s.responses});if(tr2){aS/=tr2;aT/=tr2;aQ/=tr2;aA/=tr2}
+    h+='<div class="sent-kpis"><div class="sent-kpi"><div class="sk-lb">Responses</div><div class="sk-vl">'+tr2+'</div></div><div class="sent-kpi"><div class="sk-lb">Satisfaction</div><div class="sk-vl '+scv(aS)+'">'+aS.toFixed(1)+'</div></div><div class="sent-kpi"><div class="sk-lb">Timeliness</div><div class="sk-vl '+scv(aT)+'">'+aT.toFixed(1)+'</div></div><div class="sent-kpi"><div class="sk-lb">Quality</div><div class="sk-vl '+scv(aQ)+'">'+aQ.toFixed(1)+'</div></div><div class="sent-kpi"><div class="sk-lb">Overall</div><div class="sk-vl '+scv(aA)+'">'+aA.toFixed(1)+'/5</div></div></div>';
+    h+='<div class="tw"><table><thead><tr><th>DSP</th><th>Station</th><th>Resp</th><th>Sat</th><th>Time</th><th>Qual</th><th>Avg</th></tr></thead><tbody>';
+    sents.slice().sort(function(a,b){return a.avg-b.avg}).forEach(function(s){h+='<tr><td><strong>'+s.dsp+'</strong></td><td>'+s.station+'</td><td>'+s.responses+'</td><td><span class="bg '+scv(s.sat)+'">'+s.sat.toFixed(1)+'</span></td><td><span class="bg '+scv(s.time)+'">'+s.time.toFixed(1)+'</span></td><td><span class="bg '+scv(s.qual)+'">'+s.qual.toFixed(1)+'</span></td><td><span class="bg '+scv(s.avg)+'">'+s.avg.toFixed(1)+'</span></td></tr>'});
+    h+='</tbody></table></div>';
+  }else{h+='<div class="no-data">No DSP sentiment survey data for this station</div>'}
+  if(fb.length>0){h+='<div class="sc sent">Recent DSP Feedback</div>';fb.forEach(function(f){h+='<div class="fb-card"><div class="fb-hdr"><div><span class="fb-dsp">'+f.dsp+'</span> <span class="fb-date">'+f.date+(stn==='OVERALL'?' &middot; '+f.station:'')+'</span></div><div class="fb-scores"><span>S:<strong style="color:'+scoreColor(f.sat)+'">'+f.sat+'</strong></span><span>T:<strong style="color:'+scoreColor(f.time)+'">'+f.time+'</strong></span><span>Q:<strong style="color:'+scoreColor(f.qual)+'">'+f.qual+'</strong></span></div></div>';if(f.issue)h+='<div class="fb-txt issue">'+f.issue+'</div>';if(f.suggestion)h+='<div class="fb-txt pos">'+f.suggestion+'</div>';h+='</div>'})}
+  h+='</div>';return h;
+}
 function renderCharts(stn){
   chartInstances.forEach(function(c){c.destroy()});chartInstances=[];
   var md=getMoM(stn);if(!md)return;
   var uid=stn.replace(/[^a-zA-Z0-9]/g,'');
   var gridColor='rgba(255,255,255,0.04)',tickColor='#5a6480';
   var baseOpts={responsive:true,maintainAspectRatio:false,plugins:{legend:{labels:{color:'#8892a8',font:{size:10,family:'DM Sans'}},position:'top'}},animation:{duration:600}};
-
   var el1=document.getElementById('momVol_'+uid);
   if(el1){
     var c1=new Chart(el1,{type:'bar',data:{labels:MLABELS,datasets:[
@@ -233,160 +182,54 @@ function renderCharts(stn){
     }})});
     chartInstances.push(c1);
   }
-
-  var el2=document.getElementById('momPerf_'+uid);
-  if(el2){
-    var c2=new Chart(el2,{type:'line',data:{labels:MLABELS,datasets:[
-      {label:'Med Comp (h)',data:md.map(function(d){return d.medComp}),borderColor:'#f87171',backgroundColor:'rgba(248,113,113,0.1)',tension:.3,pointRadius:4,pointBackgroundColor:'#f87171',fill:true},
-      {label:'Avg Comp (h)',data:md.map(function(d){return d.avgComp}),borderColor:'#fbbf24',backgroundColor:'rgba(251,191,36,0.08)',tension:.3,pointRadius:4,pointBackgroundColor:'#fbbf24',fill:false}
-    ]},options:Object.assign({},baseOpts,{scales:{
-      y:{grid:{color:gridColor},ticks:{color:tickColor,callback:function(v){return v+'h'}}},
-      x:{grid:{display:false},ticks:{color:tickColor}}
-    }})});
-    chartInstances.push(c2);
-  }
-
-  // Weekly trend chart (only for specific station, not OVERALL)
-  var wkEl=document.getElementById('weeklyTrend_'+uid);
-  if(wkEl && WEEKLY[stn]){
-    var c3=new Chart(wkEl,{type:'bar',data:{labels:WEEK_LABELS,datasets:[
-      {label:'Completed WOs',data:WEEKLY[stn],backgroundColor:WEEKLY[stn].map(function(v,i){return i===24?'rgba(91,140,255,0.9)':'rgba(91,140,255,0.45)'}),borderRadius:3}
-    ]},options:Object.assign({},baseOpts,{plugins:{legend:{display:false}},scales:{
-      y:{grid:{color:gridColor},ticks:{color:tickColor}},
-      x:{grid:{display:false},ticks:{color:tickColor,maxRotation:45}}
-    }})});
-    chartInstances.push(c3);
-  }
-
-  // Network weekly stacked chart
-  var netWkEl=document.getElementById('networkWeekly');
-  if(netWkEl && stn==='OVERALL'){
-    var colors=['#5b8cff','#34d399','#f87171','#fbbf24','#fb923c','#22d3ee','#a78bfa','#f472b6','#4ade80','#60a5fa','#e879f9','#34d399','#fb923c'];
-    var topStn=['HLA2','HDT3','HTP2','HHO3','HCL2','HAU1','HDY1','HSL1','HMS2','HMK4'];
-    var c4=new Chart(netWkEl,{type:'bar',data:{labels:WEEK_LABELS,datasets:topStn.map(function(st,i){return{label:st,data:WEEKLY[st],backgroundColor:colors[i],borderRadius:2}})},
-      options:Object.assign({},baseOpts,{plugins:{legend:{labels:{color:'#8892a8',font:{size:10}},position:'right'}},scales:{
-        y:{stacked:true,grid:{color:gridColor},ticks:{color:tickColor}},
-        x:{stacked:true,grid:{display:false},ticks:{color:tickColor,maxRotation:45}}
-      }})});
-    chartInstances.push(c4);
-  }
 }
 
 function build(){
-  var isOverall = cur==='OVERALL';
-  var s = isOverall ? null : STATION_SUMMARY[cur];
-  var momData = getMoM(isOverall?'OVERALL':cur);
-  var lastMo = momData ? momData[momData.length-1] : null;
-  var prevMo = momData ? momData[momData.length-2] : null;
-  var uid = cur.replace(/[^a-zA-Z0-9]/g,'');
-
-  var h='<div class="app"><div class="hdr"><div><h1>LAST MILE STATION ROLLUP</h1>';
-  h+='<div class="sub">'+(isOverall?'All Stations — Season to Date':'Station: '+cur+' · '+((s&&s.location)||''))+'</div></div>';
-  h+='<div style="display:flex;flex-direction:column;align-items:flex-end;gap:4px"><div class="stamp">WK13 · Data Period: 10/6/25 – 3/28/26</div><div class="stamp" style="color:var(--dm)">Updated: 3/31/26</div></div></div>';
-
-  // Tabs
-  h+='<div class="tabs"><button class="'+(cur==='OVERALL'?'on':'')+'" data-t="OVERALL">■ Overall</button>';
-  STATIONS.forEach(function(n){h+='<button class="'+(cur===n?'on':'')+'" data-t="'+n+'">'+n+'</button>'});
+  var m=gm(cur),cr=parseFloat(p2(m.completed,m.total)),xr=parseFloat(p2(m.cancelled,m.total));
+  var h='<div class="app"><div class="hdr"><div><h1>LAST MILE SCORECARD</h1><div class="sub">'+(cur==='OVERALL'?'All Stations Rollup':'Station: '+cur)+' &mdash; '+m.total.toLocaleString()+' Work Orders</div></div><div class="stamp">WK13 &mdash; Data: 3/28/26</div></div>';
+  h+='<div class="tabs"><button class="'+(cur==='OVERALL'?'on':'')+'" data-t="OVERALL">&#9632; Overall</button>';
+  names.forEach(function(n){h+='<button class="'+(cur===n?'on':'')+'" data-t="'+n+'">'+n+'</button>'});h+='</div>';
+  h+='<div class="kg">';
+  h+=kpi('Total WOs',m.total.toLocaleString(),'','gr','');
+  h+=kpi('Completion Rate',cr+'%',cc(cr),cc(cr),m.completed+' of '+m.total);
+  h+=kpi('Cancel Rate',xr+'%',cc(xr,false),cc(xr,false),m.cancelled+' cancelled');
+  h+=kpi('Open / In Progress',m.open.toLocaleString(),m.open>10?'ye':'gr',m.open>10?'ye':'gr',m.on_hold+' on hold');
+  h+='</div><div class="kg">';
+  var tc=m.median_comp_hrs<36?'gr':m.median_comp_hrs<72?'ye':'re';
+  h+=kpi('Med Completion',m.median_comp_hrs+'h',tc,tc,'Avg: '+m.avg_comp_hrs+'h');
+  var rc=m.median_resp_hrs<12?'gr':m.median_resp_hrs<24?'ye':'re';
+  h+=kpi('Med Response',m.median_resp_hrs+'h',rc,rc,m.resp_count+' measured');
   h+='</div>';
-
-  if(isOverall){
-    // Network KPIs
-    var netComp=Object.values(STATION_SUMMARY).reduce(function(a,s){return a+s.comp},0);
-    var netTotal=Object.values(STATION_SUMMARY).reduce(function(a,s){return a+s.total},0);
-    var netCanc=Object.values(STATION_SUMMARY).reduce(function(a,s){return a+s.canc},0);
-    var compPct=p2(netComp,netTotal);
-    h+='<div class="kg">';
-    h+=kpi('Total WOs',netTotal.toLocaleString(),'bl','bl','Season to date');
-    h+=kpi('Completed',netComp.toLocaleString(),cc(parseFloat(compPct)),cc(parseFloat(compPct)),compPct+'% completion rate');
-    h+=kpi('Cancelled',netCanc.toLocaleString(),cc(parseFloat(p2(netCanc,netTotal)),false),cc(parseFloat(p2(netCanc,netTotal)),false),p2(netCanc,netTotal)+'% cancel rate');
-    h+=kpi('Active Stations','13','gr','gr','Oct \'25 – Mar \'26');
-    h+='</div>';
-
-    // Station comparison table
-    h+='<div class="sc">Station Performance — Season to Date</div>';
-    h+='<div class="tw scr"><table><thead><tr><th>Station</th><th>Location</th><th>Total WOs</th><th>Comp%</th><th>Cancel%</th><th>Med TAT</th><th>Avg TAT</th><th>Box</th><th>Cargo</th><th>Tractor</th><th>Top Tech</th></tr></thead><tbody>';
-    STATIONS.forEach(function(sn){
-      var st=STATION_SUMMARY[sn];
-      var cpct=parseFloat(p2(st.comp,st.total));
-      var xpct=parseFloat(p2(st.canc,st.total));
-      var tc=tatColor(st.medTat);
-      var topTech=Object.keys(st.topTechs)[0]||'—';
-      var topTechWos=Object.values(st.topTechs)[0]||0;
-      h+='<tr><td><strong style="font-family:var(--mo);color:var(--ac)">'+sn+'</strong></td>';
-      h+='<td style="color:var(--mu);font-size:11px">'+st.location+'</td>';
-      h+='<td>'+st.total+'</td>';
-      h+='<td><span class="bg '+cc(cpct)+'">'+cpct.toFixed(1)+'%</span></td>';
-      h+='<td><span class="bg '+cc(xpct,false)+'">'+xpct.toFixed(1)+'%</span></td>';
-      h+='<td><span class="bg '+tc+'">'+st.medTat+'d</span></td>';
-      h+='<td><span class="bg '+tatColor(st.avgTat)+'">'+st.avgTat+'d</span></td>';
-      h+='<td style="font-family:var(--mo)">'+st.box+'</td>';
-      h+='<td style="font-family:var(--mo)">'+st.cargo+'</td>';
-      h+='<td style="font-family:var(--mo)">'+st.tractor+'</td>';
-      h+='<td style="font-size:11px;color:var(--mu)">'+topTech+' ('+topTechWos+')</td></tr>';
-    });
+  h+=buildMoMSection(cur);
+  h+=buildSentimentSection(cur);
+  h+='<div class="sc">Status Distribution</div><div class="bars">';
+  topN(m.status_counts,10).forEach(function(e){var w=m.total?(e[1]/m.total*100):0;var c=e[0]==='COMPLETED'?'gr':e[0]==='CANCELLED'?'re':'bl';h+='<div class="br"><div class="bl">'+e[0].replace(/_/g,' ')+'</div><div class="bt"><div class="bf '+c+'" style="width:'+Math.max(w,2)+'%">'+w.toFixed(1)+'%</div></div><div class="bc">'+e[1]+'</div></div>'});
+  h+='</div>';
+  h+='<div class="duo"><div><div class="sc">By Priority</div><div class="tw"><table><thead><tr><th>Priority</th><th>Count</th><th>%</th></tr></thead><tbody>';
+  topN(m.priorities,5).forEach(function(e){var pv=p2(e[1],m.total);h+='<tr><td><strong>'+e[0]+'</strong></td><td>'+e[1]+'</td><td><span class="bg '+(parseFloat(pv)>35?'ye':'gr')+'">'+pv+'%</span></td></tr>'});
+  h+='</tbody></table></div></div><div><div class="sc">By Category</div><div class="tw"><table><thead><tr><th>Category</th><th>Count</th><th>%</th></tr></thead><tbody>';
+  topN(m.categories,6).forEach(function(e){h+='<tr><td><strong>'+e[0].replace(/_/g,' ')+'</strong></td><td>'+e[1]+'</td><td>'+p2(e[1],m.total)+'%</td></tr>'});
+  h+='</tbody></table></div></div></div>';
+  h+='<div class="duo"><div><div class="sc">Scheduled vs Non-Scheduled</div><div class="tw"><table><thead><tr><th>Type</th><th>Count</th><th>%</th></tr></thead><tbody>';
+  topN(m.types,4).forEach(function(e){h+='<tr><td><strong>'+e[0].replace(/_/g,' ')+'</strong></td><td>'+e[1]+'</td><td>'+p2(e[1],m.total)+'%</td></tr>'});
+  h+='</tbody></table></div></div><div><div class="sc">Top Workflows</div><div class="tw"><table><thead><tr><th>Workflow</th><th>Count</th><th>%</th></tr></thead><tbody>';
+  topN(m.workflows,8).forEach(function(e){h+='<tr><td><strong>'+e[0].replace(/_/g,' ')+'</strong></td><td>'+e[1]+'</td><td>'+p2(e[1],m.total)+'%</td></tr>'});
+  h+='</tbody></table></div></div></div>';
+  h+='<div class="sc">Technician Workload</div><div class="tw scr"><table><thead><tr><th>Technician</th><th>WOs</th><th>%</th></tr></thead><tbody>';
+  topN(m.technicians,12).forEach(function(e){h+='<tr><td><strong>'+e[0]+'</strong></td><td>'+e[1]+'</td><td>'+p2(e[1],m.total)+'%</td></tr>'});
+  h+='</tbody></table></div>';
+  var cre=topN(m.cancel_reasons,6),hre=topN(m.hold_reasons,6);
+  if(cre.length||hre.length){h+='<div class="duo">';if(cre.length){h+='<div><div class="sc">Cancellation Reasons</div><div class="tw"><table><thead><tr><th>Reason</th><th>Count</th></tr></thead><tbody>';cre.forEach(function(e){h+='<tr><td>'+e[0].replace(/_/g,' ')+'</td><td><span class="bg re">'+e[1]+'</span></td></tr>'});h+='</tbody></table></div></div>'}if(hre.length){h+='<div><div class="sc">Hold Reasons</div><div class="tw"><table><thead><tr><th>Reason</th><th>Count</th></tr></thead><tbody>';hre.forEach(function(e){h+='<tr><td>'+e[0].replace(/_/g,' ')+'</td><td><span class="bg ye">'+e[1]+'</span></td></tr>'});h+='</tbody></table></div></div>'}h+='</div>'}
+  if(cur==='OVERALL'){
+    h+='<div class="sc">Station Comparison</div><div class="tw scr"><table><thead><tr><th>Station</th><th>WOs</th><th>Comp%</th><th>Cancel%</th><th>Open</th><th>MedComp</th><th>MedResp</th><th>Adoption</th><th>Sentiment</th></tr></thead><tbody>';
+    names.forEach(function(sn){var sm=WO.stations[sn],scr2=parseFloat(p2(sm.completed,sm.total)),sxr=parseFloat(p2(sm.cancelled,sm.total));var ad=ADOPTION[sn],adVal=ad?ad.adoption.toFixed(1)+'%':'—',adC=ad?(ad.adoption>=85?'gr':ad.adoption>=70?'ye':'re'):'';var ss=SENTIMENT.filter(function(x){return x.station===sn});var sentVal='—',sentC='';if(ss.length){var tr2=0,ta=0;ss.forEach(function(x){tr2+=x.responses;ta+=x.avg*x.responses});if(tr2){var av=ta/tr2;sentVal=av.toFixed(1)+'/5';sentC=scv(av)}}h+='<tr><td><strong>'+sn+'</strong></td><td>'+sm.total+'</td><td><span class="bg '+cc(scr2)+'">'+scr2+'%</span></td><td><span class="bg '+cc(sxr,false)+'">'+sxr+'%</span></td><td>'+sm.open+'</td><td>'+sm.median_comp_hrs+'h</td><td>'+sm.median_resp_hrs+'h</td><td>'+(adC?'<span class="bg '+adC+'">'+adVal+'</span>':adVal)+'</td><td>'+(sentC?'<span class="bg '+sentC+'">'+sentVal+'</span>':sentVal)+'</td></tr>'});
     h+='</tbody></table></div>';
-
-    // Status distribution bars
-    h+='<div class="sc">WO Volume by Station (Season)</div><div class="bars">';
-    var maxVol=Math.max.apply(null,STATIONS.map(function(sn){return STATION_SUMMARY[sn].total}));
-    STATIONS.forEach(function(sn){
-      var st=STATION_SUMMARY[sn];
-      var w=Math.max((st.total/maxVol)*100,2);
-      var cls=tatColor(st.medTat);
-      h+='<div class="br"><div class="bl-lbl">'+sn+'</div><div class="bt"><div class="bf '+cls+'" style="width:'+w+'%">'+st.total+'</div></div><div class="bc">'+st.medTat+'d</div></div>';
-    });
-    h+='</div>';
-
-    h+=buildMoMSection('OVERALL');
-
-    // Network weekly chart
-    h+='<div class="sc">Weekly Volume — Network (All Stations Stacked)</div>';
-    h+='<div class="chart-card" style="margin-bottom:20px"><canvas id="networkWeekly" style="height:280px!important"></canvas></div>';
-
-  } else {
-    // Individual station view
-    var cpct=parseFloat(p2(s.comp,s.total));
-    var xpct=parseFloat(p2(s.canc,s.total));
-    h+='<div class="kg">';
-    h+=kpi('Total WOs',s.total,'bl','bl','Season to date');
-    h+=kpi('Completed',s.comp,cc(cpct),cc(cpct),cpct.toFixed(1)+'% completion rate');
-    h+=kpi('Cancelled',s.canc,cc(xpct,false),cc(xpct,false),xpct.toFixed(1)+'% cancel rate');
-    h+=kpi('Open/In Progress',s.open,s.open>5?'ye':'gr',s.open>5?'ye':'gr','currently open');
-    h+='</div><div class="kg">';
-    h+=kpi('Med TAT (Season)',s.medTat+'d',tatColor(s.medTat),tatColor(s.medTat),'Median completion time');
-    h+=kpi('Avg TAT (Season)',s.avgTat+'d',tatColor(s.avgTat),tatColor(s.avgTat),'Average completion time');
-    h+=kpi('Box Trucks',s.box,'bl','bl',p2(s.box,s.comp)+'% of completed');
-    h+=kpi('Cargo Vehicles',s.cargo,'cy','cy',p2(s.cargo,s.comp)+'% of completed');
-    h+='</div>';
-
-    // Weekly trend
-    h+='<div class="sc">Weekly Completed WOs — WK41\'25 to WK13\'26</div>';
-    h+='<div class="chart-card" style="margin-bottom:20px"><canvas id="weeklyTrend_'+uid+'" style="height:220px!important"></canvas></div>';
-
-    h+=buildMoMSection(cur);
-
-    // Top technicians
-    h+='<div class="sc">Top Technicians — Season to Date</div>';
-    h+='<div class="tw"><table><thead><tr><th>Technician</th><th>Completed WOs</th><th>Share</th></tr></thead><tbody>';
-    var techs=s.topTechs;
-    Object.entries(techs).forEach(function(e){
-      var pct=p2(e[1],s.comp);
-      h+='<tr><td><strong>'+e[0]+'</strong></td><td style="font-family:var(--mo)">'+e[1]+'</td>';
-      h+='<td><div style="display:flex;align-items:center;gap:8px"><div style="flex:1;height:8px;background:var(--sf2);border-radius:4px;overflow:hidden"><div style="width:'+pct+'%;height:100%;background:var(--ac);border-radius:4px"></div></div><span style="font-family:var(--mo);font-size:11px;color:var(--mu);width:36px">'+pct+'%</span></div></td></tr>';
-    });
-    h+='</tbody></table></div>';
-
-    // Monthly detail table already in MoM section
   }
-
   h+='</div>';
   document.getElementById('root').innerHTML=h;
-  document.querySelectorAll('.tabs button').forEach(function(btn){
-    btn.addEventListener('click',function(){cur=btn.dataset.t;build();window.scrollTo(0,0)});
-  });
+  document.querySelectorAll('.tabs button').forEach(function(btn){btn.addEventListener('click',function(){cur=btn.dataset.t;build();window.scrollTo(0,0)})});
   setTimeout(function(){renderCharts(cur)},50);
 }
-
 build();
 </script>
 </body>
